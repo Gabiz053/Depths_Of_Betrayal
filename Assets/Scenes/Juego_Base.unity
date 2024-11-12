@@ -1871,7 +1871,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 945042158}
-    PlayerPrefab: {fileID: 2946787895934331853, guid: 04de07e4266408a43ad24c8c62661a81, type: 3}
+    PlayerPrefab: {fileID: 699375346499742170, guid: fa08d7aa93392a941aeb8b668e162e99, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 5e36e2103f36bf04d8206657071f4a6f, type: 2}
@@ -2468,7 +2468,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40.10727
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2494,13 +2494,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073365048}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31902024, y: -0, z: -0, w: 0.94774795}
-  m_LocalPosition: {x: 0, y: 12, z: -10}
+  m_LocalRotation: {x: 0.0024004402, y: 0.010798389, z: -0.00001999909, w: 0.99993885}
+  m_LocalPosition: {x: 422.543, y: 193.87975, z: -1780.196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 37.207, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197426116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,7 +4738,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1073365051}
   - {fileID: 949504625}
   - {fileID: 1528199149}
   - {fileID: 907115698}
@@ -4757,4 +4756,5 @@ SceneRoots:
   - {fileID: 945042160}
   - {fileID: 2144113171}
   - {fileID: 1700085849}
+  - {fileID: 1073365051}
   - {fileID: 1633572089}
