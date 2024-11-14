@@ -4,19 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Depths_Of_Betrayal_Samuel.Business
+public class MapSpot
 {
-    public class MapSpot
-    {
-        public int CoordenadaX { get; set; }
-        public int CoordenadaY { get; set; }
-        public int CoordenadaZ { get; set; }
+    public int CoordenadaX { get; set; }
+    public int CoordenadaY { get; set; }
+    public int CoordenadaZ { get; set; }
 
-        public MapSpot(int coordenadaX, int coordenadaY, int coordenadaZ)
-        {
-            CoordenadaX = coordenadaX;
-            CoordenadaY = coordenadaY;
-            CoordenadaZ = coordenadaZ;
-        }
+    public MapSpot(int coordenadaX, int coordenadaY, int coordenadaZ)
+    {
+        CoordenadaX = coordenadaX;
+        CoordenadaY = coordenadaY;
+        CoordenadaZ = coordenadaZ;
     }
 }
