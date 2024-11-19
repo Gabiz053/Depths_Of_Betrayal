@@ -16,33 +16,43 @@ public class Character : MonoBehaviour
 
     public float distancia = 1.5f;
 
+    //Objeto que hace referencia al Texto de Interaccion
     public GameObject TextDetect;
+    //Layer para objetos recolectables
+    public LayerMask collectableLayer;
+
     GameObject ultimoReconocido = null;
 
 
     void Start(){
+
+         // Encuentra el Canvas de Press E
+        TextDetect = GameObject.Find("ObjetoTextoPressE");
+        //Encuentra la Layer Collectable
+        collectableLayer = LayerMask.GetMask("Collectable");
+
+        //desactiva el texto de interaccion
         TextDetect.SetActive(false);
     }
     
-    void Update(){
+
+    void Update() {
         RaycastHit hit;
 
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
 
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia)){
-
-
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, collectableLayer)) {
             deselect();
             selectedObject(hit.transform);
 
-            if (Input.GetKeyDown(KeyCode.E)){
-                hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this); 
+            if (Input.GetKeyDown(KeyCode.E)) {
+                hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this);
             }
-        } else{
-           deselect();
+        } else {
+            deselect();
         }
     }
+
 
     void selectedObject(Transform transform){
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
