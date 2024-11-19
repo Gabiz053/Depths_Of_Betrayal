@@ -73,11 +73,11 @@ public class animationStateController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            rotationInput = -0.1f; // Gira a la izquierda
+            rotationInput = -0.25f; // Gira a la izquierda
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            rotationInput = 0.1f; // Gira a la derecha
+            rotationInput = 0.25f; // Gira a la derecha
         }
 
         // Aplicar rotación al personaje
@@ -100,13 +100,18 @@ public class animationStateController : MonoBehaviour
             animator.SetBool(isSwimmingHash, false);
         }
 
-        if (!isSpeeding && (isMoving && shiftPressed))
+        if (!isSpeeding && isMoving && shiftPressed)
         {
             animator.SetBool(isSpeedingHash, true);
         }
-        else if (isSpeeding && (isMoving && !shiftPressed))
+        if (isSpeeding && isMoving && !shiftPressed)
         {
             animator.SetBool(isSpeedingHash, false);
+        }
+        if (isSpeeding && !isMoving && !shiftPressed)
+        {
+            animator.SetBool(isSpeedingHash, false);
+            animator.SetBool(isSwimmingHash, false);
         }
     }
 }
