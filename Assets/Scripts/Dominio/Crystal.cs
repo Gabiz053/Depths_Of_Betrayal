@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class Crystal : CollectableObjetc
 {
@@ -19,11 +20,7 @@ public class Crystal : CollectableObjetc
     public override void pickedUp(Character c)
     {
         c.Inventory.Cristales.Add(this);
-
-        //TODO: calcular coordenadas fuera del mapa
-        Position.CoordenadaX = -1000;
-        Position.CoordenadaY = -1000;
-        Position.CoordenadaZ = -1000;
+        transform.position = new Vector3(0,0,0);
     }
 
     public void comeback()

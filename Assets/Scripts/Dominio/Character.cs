@@ -9,16 +9,55 @@ public class Character : MonoBehaviour
     public const float  SPEED = 5.0f;
 
     public string characterName;
-    public Inventory Inventory { get; set; }
+    public Inventory Inventory { get; set; } = new Inventory();
 
     public int Health { get; set; } = MAX_HEALTH;
     public float Speed { get; set; } = SPEED;
 
-    // Method for basic movement, which all characters can use
-    public virtual void Move(Vector3 direction)
-    {
-        transform.Translate(direction * Speed * Time.deltaTime);
+    public float distancia = 1.5f;
+
+    public GameObject TextDetect;
+    GameObject ultimoReconocido = null;
+
+
+    void Start(){
+        TextDetect.SetActive(false);
     }
+    
+    void Update(){
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia)){
+
+
+            deselect();
+            selectedObject(hit.transform);
+
+            if (Input.GetKeyDown(KeyCode.E)){
+                hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this); 
+            }
+        } else{
+           deselect();
+        }
+    }
+
+    void selectedObject(Transform transform){
+        transform.GetComponent<MeshRenderer>().material.color = Color.green;
+        TextDetect.SetActive(true);
+        ultimoReconocido = transform.gameObject;
+    }
+
+    void deselect(){
+        if (ultimoReconocido){
+            ultimoReconocido.GetComponent<Renderer>().material.color = Color.magenta;
+            ultimoReconocido = null;
+            TextDetect.SetActive(false);
+        }
+    }
+
 
     // Method to take damage, can be overridden if needed
     public virtual bool TakeDamage()

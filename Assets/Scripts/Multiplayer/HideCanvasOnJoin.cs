@@ -4,8 +4,8 @@ using Unity.Netcode;
 
 public class SessionManager : MonoBehaviour
 {
-    // Aquí ahora usamos el tipo Canvas en lugar de GameObject
-    public Canvas canvas;
+    // Aquï¿½ ahora usamos el tipo Canvas en lugar de GameObject
+    public GameObject canvas;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class SessionManager : MonoBehaviour
         // Si el cliente es el local, ocultamos el Canvas
         if (clientId == NetworkManager.Singleton.LocalClientId)
         {
-            canvas.enabled = false;  // Desactiva el Canvas
+            canvas.SetActive(false);
         }
     }
 }
