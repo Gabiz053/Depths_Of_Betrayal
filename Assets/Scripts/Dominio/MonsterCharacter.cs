@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-#define DEAD 1
-
 public class MonsterCharacter : Character
 {
     public GameObject monsterModel;
     public bool isTransformed = false;
     private int cooldown = 10; // 10 second cooldown for the transform ability    
     private bool canTransform = true;
+    
+    // TODO: crear constructor :)
 
     // Method to activate monster powers
     public void EnableMonsterPowers()
@@ -25,16 +25,16 @@ public class MonsterCharacter : Character
         if (!isTransformed)
         {
             isTransformed = true;
-            health *= 2; // Example: Double health when transformed
-            speed *= 2; // Increase speed
+            Health *= 2; // Example: Double health when transformed
+            Speed *= 2; // Increase speed
             Debug.Log(characterName + " has transformed!");
             monsterModel.SetActive(false); // Hide the character model
         }
         else
         {
             isTransformed = false;
-            health /= 2; // Revert health
-            speed /= 2; // Revert speed
+            Health /= 2; // Revert health
+            Speed /= 2; // Revert speed
             Debug.Log(characterName + " has reverted back.");
             monsterModel.SetActive(true); // Show the character model
         }
@@ -43,16 +43,16 @@ public class MonsterCharacter : Character
 
     public void Attack(Character target)
     {
-        if (target.TakeDamage() == DEAD) {
+        if (target.TakeDamage()) {
             // Transform back if the target dies
             ToggleTransform();
             StartCoroutine(TransformCooldown());
         }
         //Reduce speed for a short time
-        speed /= 2;
-        while (speed < SPEED)
+        Speed /= 2;
+        while (Speed < SPEED)
         {
-            speed += 0.1f;
+            Speed += 0.1f;
         }
     }
 
@@ -74,9 +74,10 @@ public class MonsterCharacter : Character
     }
 
     // Monster cant take damage nor die
-    public override void TakeDamage()
+    public override bool TakeDamage()
     {
         Debug.Log(characterName + " is immune to damage!");
+        return false;
     }
 
     protected override void Die()
