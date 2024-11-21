@@ -1,21 +1,73 @@
 using UnityEngine;
 
-#define MAX_HEALTH 2
-#define HEALTH_REDUCTION 1
-#define SPEED 5.0f
+
+
 public class Character : MonoBehaviour
 {
+    public const int MAX_HEALTH = 2;
+    public const int  HEALTH_REDUCTION = 1;
+    public const float  SPEED = 5.0f;
+
     public string characterName;
-    public Inventory Inventory { get; set; }
+    public Inventory Inventory { get; set; } = new Inventory();
 
-    public int Health {get; set;} = MAX_HEALTH;
-    public float Speed {get; set} = SPEED;
+    public int Health { get; set; } = MAX_HEALTH;
+    public float Speed { get; set; } = SPEED;
 
-    // Method for basic movement, which all characters can use
-    public virtual void Move(Vector3 direction)
-    {
-        transform.Translate(direction * speed * Time.deltaTime);
+    public float distancia = 1.5f;
+
+    //Objeto que hace referencia al Texto de Interaccion
+    public GameObject TextDetect;
+    //Layer para objetos recolectables
+    private LayerMask collectableLayer;
+
+    GameObject ultimoReconocido = null;
+
+
+    public virtual void Start(){
+
+         // Encuentra el Canvas de Press E
+        TextDetect = GameObject.Find("ObjetoTextoPressE");
+        //Encuentra la Layer Collectable
+        collectableLayer = LayerMask.GetMask("Collectable");
+
+        //desactiva el texto de interaccion
+        TextDetect.SetActive(false);
     }
+    
+
+    public virtual void Update() {
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, collectableLayer)) {
+            deselect();
+            selectedObject(hit.transform);
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this);
+            }
+        } else {
+            deselect();
+        }
+    }
+
+
+    void selectedObject(Transform transform){
+        transform.GetComponent<MeshRenderer>().material.color = Color.green;
+        TextDetect.SetActive(true);
+        ultimoReconocido = transform.gameObject;
+    }
+
+    void deselect(){
+        if (ultimoReconocido){
+            ultimoReconocido.GetComponent<Renderer>().material.color = Color.magenta;
+            ultimoReconocido = null;
+            TextDetect.SetActive(false);
+        }
+    }
+
 
     // Method to take damage, can be overridden if needed
     public virtual bool TakeDamage()
@@ -51,49 +103,6 @@ public class Character : MonoBehaviour
         Debug.Log(characterName + " has deposited all crystals!");
         platform.pickUp(Inventory.Cristales);
         Inventory.Cristales.Clear();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        CollectableObjetc collectable = collision.gameObject.GetComponent<CollectableObjetc>();
-        if (collectable != null)
-        {
-            Debug.Log("Press 'E' to collect the crystal.");
-            StartCoroutine(WaitForCollectInput(collectable));
-        }
-
-        MonsterCharacter monster = collision.gameObject.GetComponent<MonsterCharacter>();
-        if (monster != null)
-        {
-            Debug.Log("Press 'F' to attack the monster.");
-            StartCoroutine(WaitForAttackInput(monster));
-        }
-    }
-
-    private IEnumerator WaitForCollectInput(CollectableObjetc collectable)
-    {
-        while (true)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                pickObjetc(collectable);
-                yield break;
-            }
-            yield return null;
-        }
-    }
-
-    private IEnumerator WaitForAttackInput(MonsterCharacter monster)
-    {
-        while (true)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                monster.Attack(this);
-                yield break;
-            }
-            yield return null;
-        }
     }
 }
 

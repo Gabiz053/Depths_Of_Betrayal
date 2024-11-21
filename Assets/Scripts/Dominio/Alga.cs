@@ -1,33 +1,31 @@
-﻿using Depths_Of_Betrayal_Samuel.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Depths_Of_Betrayal_Samuel.Dominio
+
+public class Alga : CollectableObjetc
 {
-    public class Alga : CollectableObjetc
+    public override MapSpot Position { get; set; }
+
+    public Alga()
     {
-        public override MapSpot Position { get; set; }
+        // Position = GestionSpots.setSpot();
+    }
 
-        public Alga() 
+
+    public override void pickedUp(Character c)
+    {
+        if (c.Health < 2)
         {
-            Position = GestionSpots.setSpot();
+            c.Health += 1;
         }
 
-
-        public override void pickedUp(Character c)
-        {
-            if (c.Health < 2)
-            {
-                c.Health += 1;
-            }
-
-            //TODO: calcular coordenadas fuera del mapa
-            Position.CoordenadaX = -1000;
-            Position.CoordenadaY = -1000;
-            Position.CoordenadaZ = -1000;
-        }
+        //TODO: calcular coordenadas fuera del mapa
+        Position.CoordenadaX = -1000;
+        Position.CoordenadaY = -1000;
+        Position.CoordenadaZ = -1000;
     }
 }
