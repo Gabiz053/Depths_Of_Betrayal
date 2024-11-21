@@ -1,39 +1,32 @@
-﻿using Depths_Of_Betrayal_Samuel.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Depths_Of_Betrayal_Samuel.Dominio
+public class Crystal : CollectableObjetc
 {
-    public class Crystal : CollectableObjetc
+
+    public override MapSpot Position { get; set; }
+    public MapSpot SpotInicial { get; set; }
+
+    public Crystal()
     {
-
-        public override MapSpot Position { get; set; }
-        public MapSpot SpotInicial { get; set; }
-
-        public Crystal()
-        {
-            SpotInicial = GestionSpots.setSpot(this);
-            Position = SpotInicial;
-        }
-
-        public override void pickedUp(Character c)
-        {
-            c.Inventory.Cristales.Add(this);
-
-            //TODO: calcular coordenadas fuera del mapa
-            Position.CoordenadaX = -1000;
-            Position.CoordenadaY = -1000;
-            Position.CoordenadaZ = -1000;
-        }
-
-        public void comeback()
-        {
-            //TODO: que vuelva a su posicion incial
-            Position = SpotInicial;
-        }
-
+        // SpotInicial = GestionSpots.setSpot(this);
+        // Position = SpotInicial;
     }
+
+    public override void pickedUp(Character c)
+    {
+        c.Inventory.Cristales.Add(this);
+        transform.position = new Vector3(0,0,0);
+    }
+
+    public void comeback()
+    {
+        //TODO: que vuelva a su posicion incial
+        Position = SpotInicial;
+    }
+
 }
