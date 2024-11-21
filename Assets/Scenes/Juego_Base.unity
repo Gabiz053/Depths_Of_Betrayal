@@ -659,6 +659,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378831377}
   m_CullTransparentMesh: 1
+--- !u!1 &463071330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+  m_PrefabInstance: {fileID: 1997973406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &463071334
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463071330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 290952927289784338, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
 --- !u!1 &476851777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1898,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 945042158}
-    PlayerPrefab: {fileID: 2946787895934331853, guid: 04de07e4266408a43ad24c8c62661a81, type: 3}
+    PlayerPrefab: {fileID: 8036637757147191088, guid: d29d40d4989465142a3054abb5c2ec47, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 5e36e2103f36bf04d8206657071f4a6f, type: 2}
@@ -1883,7 +1910,7 @@ MonoBehaviour:
     TimeResyncInterval: 30
     EnsureNetworkVariableLengthSafety: 0
     EnableSceneManagement: 1
-    ForceSamePrefabs: 1
+    ForceSamePrefabs: 0
     RecycleNetworkIds: 1
     NetworkIdRecycleDelay: 120
     RpcHashSize: 0
@@ -2468,7 +2495,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 40.10727
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2494,13 +2521,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073365048}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31902024, y: -0, z: -0, w: 0.94774795}
-  m_LocalPosition: {x: 0, y: 12, z: -10}
+  m_LocalRotation: {x: 0.0024004402, y: 0.010798389, z: -0.00001999909, w: 0.99993885}
+  m_LocalPosition: {x: 422.543, y: 193.87975, z: -1780.196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 37.207, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197426116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4400,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
+--- !u!1001 &1997973406
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -63.236504
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 110.34284
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      propertyPath: m_Name
+      value: mapa_v02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463071334}
+  m_SourcePrefab: {fileID: 100100000, guid: db7fd6ffe67715849bba61dda4d12dbc, type: 3}
 --- !u!1 &2052617954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4733,12 +4824,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1003f307a1821469dffda8e50fbc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2144113170}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1073365051}
   - {fileID: 949504625}
   - {fileID: 1528199149}
   - {fileID: 907115698}
@@ -4757,4 +4846,6 @@ SceneRoots:
   - {fileID: 945042160}
   - {fileID: 2144113171}
   - {fileID: 1700085849}
+  - {fileID: 1073365051}
   - {fileID: 1633572089}
+  - {fileID: 1997973406}
