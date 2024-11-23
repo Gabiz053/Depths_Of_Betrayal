@@ -19,12 +19,12 @@ public class Character : MonoBehaviour
     //Objeto que hace referencia al Texto de Interaccion
     public GameObject TextDetect;
     //Layer para objetos recolectables
-    public LayerMask collectableLayer;
+    private LayerMask collectableLayer;
 
     GameObject ultimoReconocido = null;
 
 
-    void Start(){
+    public virtual void Start(){
 
          // Encuentra el Canvas de Press E
         TextDetect = GameObject.Find("ObjetoTextoPressE");
@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
     }
     
 
-    void Update() {
+    public virtual void Update() {
         RaycastHit hit;
 
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
