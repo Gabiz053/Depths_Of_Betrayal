@@ -8,13 +8,13 @@ public class MonsterCharacter : Character
 
     public bool isTransformed = false;
     
-    void Start(){
+    public override void Start(){
         base.Start();
 
         monsterPrefab.SetActive(false);
     }
-
-    void Update(){
+    
+    public override void Update(){
         base.Update();
 
         if (Input.GetKeyDown(KeyCode.T)) {
