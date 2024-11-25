@@ -6,14 +6,10 @@ public class Character : MonoBehaviour
 {
     public const int MAX_HEALTH = 2;
     public const int  HEALTH_REDUCTION = 1;
-    public const float  SPEED = 5.0f;
-
     public string characterName;
     public Inventory Inventory { get; set; } = new Inventory();
 
     public int Health { get; set; } = MAX_HEALTH;
-    public float Speed { get; set; } = SPEED;
-
     public float distancia = 1.5f;
 
     //Objeto que hace referencia al Texto de Interaccion
@@ -36,12 +32,18 @@ public class Character : MonoBehaviour
     }
     
 
-    public virtual void Update() {
+    public virtual void Update()
+    {
         RaycastHit hit;
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+        // Desplazar el origen del raycast para que esté en el centro del personaje (usando el centro del collider)
+        Vector3 rayOrigin = transform.position + Vector3.up * 1.0f; // Ajusta la altura según el tamaño del personaje
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, collectableLayer)) {
+        // Dibuja el raycast para depuración desde el centro del personaje
+        Debug.DrawRay(rayOrigin, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+
+        // Realizar el Raycast desde el centro del personaje (ajustado hacia arriba)
+        if (Physics.Raycast(rayOrigin, transform.TransformDirection(Vector3.forward), out hit, distancia, collectableLayer)) {
             deselect();
             selectedObject(hit.transform);
 
@@ -52,6 +54,7 @@ public class Character : MonoBehaviour
             deselect();
         }
     }
+
 
 
     void selectedObject(Transform transform){
@@ -66,43 +69,6 @@ public class Character : MonoBehaviour
             ultimoReconocido = null;
             TextDetect.SetActive(false);
         }
-    }
-
-
-    // Method to take damage, can be overridden if needed
-    public virtual bool TakeDamage()
-    {
-        bool dead = false;
-        Health -= HEALTH_REDUCTION;
-        if (Health <= 0)
-        {
-            Die();
-            dead = true;
-        }
-        return dead;
-    }
-
-    // Basic death function
-    protected virtual void Die()
-    {
-        Debug.Log(characterName + " has died.");
-        // Becomes invisible
-        gameObject.SetActive(false);
-    }
-
-    // Crystal is collected
-    public void pickObjetc(CollectableObjetc o)
-    {
-        Debug.Log(characterName + " has collected a crystal!");
-        o.pickedUp(this);
-    }
-
-    // Desposit all crystals form the inventory to the platform
-    public void DepositCrystals(Platform platform)
-    {
-        Debug.Log(characterName + " has deposited all crystals!");
-        platform.pickUp(Inventory.Cristales);
-        Inventory.Cristales.Clear();
     }
 }
 
