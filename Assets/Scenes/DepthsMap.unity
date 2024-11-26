@@ -1104,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cristal_con_textura
       objectReference: {fileID: 0}
+    - target: {fileID: 6107284292647728732, guid: f0dc9da9314142444b082b7bc254b5e0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
