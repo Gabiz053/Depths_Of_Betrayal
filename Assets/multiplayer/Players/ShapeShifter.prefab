@@ -3349,7 +3349,7 @@ GameObject:
   - component: {fileID: 6643362104865049570}
   - component: {fileID: 589540434495746164}
   - component: {fileID: -4588794437257869942}
-  - component: {fileID: 228036945620898433}
+  - component: {fileID: 7066495783913981802}
   - component: {fileID: 6563021616035586012}
   - component: {fileID: -6383078581181463244}
   m_Layer: 0
@@ -3434,7 +3434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2457532368
+  GlobalObjectIdHash: 3817350502
   InScenePlacedSourceGlobalObjectIdHash: 3817350502
   DeferredDespawnTick: 0
   Ownership: 1
@@ -3483,7 +3483,7 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &228036945620898433
+--- !u!114 &7066495783913981802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
