@@ -35,6 +35,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space)) 
         {
             verticalInput = 1f;  // Flotando hacia arriba
+            AudioManager.instance.playSFX(AudioManager.instance.swim);
         }
         // Si solo presiona Shift, se hunde más rápido pero no se mueve horizontalmente
         else if (Input.GetKey(KeyCode.LeftShift) && (moveX == 0 && moveZ == 0)) 

@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     public float distancia = 1.5f;
 
     //Objeto que hace referencia al Texto de Interaccion
-    public GameObject TextDetect;
+    // public GameObject TextDetect;
     //Layer para objetos recolectables
     private LayerMask collectableLayer;
 
@@ -23,12 +23,12 @@ public class Character : MonoBehaviour
     public virtual void Start(){
 
          // Encuentra el Canvas de Press E
-        TextDetect = GameObject.Find("ObjetoTextoPressE");
+        // TextDetect = GameObject.Find("ObjetoTextoPressE");
         //Encuentra la Layer Collectable
         collectableLayer = LayerMask.GetMask("Collectable");
 
         //desactiva el texto de interaccion
-        TextDetect.SetActive(false);
+        // TextDetect.SetActive(false);
     }
     
 
@@ -49,6 +49,7 @@ public class Character : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E)) {
                 hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this);
+                AudioManager.instance.playSFX(AudioManager.instance.crystal);
             }
         } else {
             deselect();
@@ -59,7 +60,7 @@ public class Character : MonoBehaviour
 
     void selectedObject(Transform transform){
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
-        TextDetect.SetActive(true);
+        // TextDetect.SetActive(true);
         ultimoReconocido = transform.gameObject;
     }
 
@@ -67,7 +68,7 @@ public class Character : MonoBehaviour
         if (ultimoReconocido){
             ultimoReconocido.GetComponent<Renderer>().material.color = Color.magenta;
             ultimoReconocido = null;
-            TextDetect.SetActive(false);
+            // TextDetect.SetActive(false);
         }
     }
 }
