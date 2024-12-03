@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - map
   - cristal
+  - CinemachineTarget
+  - SceneCamera
   layers:
   - Default
   - TransparentFX
