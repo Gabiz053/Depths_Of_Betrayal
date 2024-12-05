@@ -9,12 +9,20 @@ public class AnimationController : NetworkBehaviour
     // Hashes de los parámetros de animación para mejorar el rendimiento
     private int isSwimmingHash;
     private int isSpeedingHash;
+    private int isTakingHash;
+    private int isDeadHash;
+
 
     // Variables para mantener el estado de las animaciones
     private bool isSwimming;
     private bool isSpeeding;
+    private bool isTaking;
+    private bool isDead;
     private bool isMoving;
     private bool shiftPressed;
+    private bool takePressed;
+    private bool deadPressed;
+
 
     // Variables que almacenan el estado de las teclas de movimiento
     private bool forwardPressed, backwardPressed, leftPressed, rightPressed;
@@ -31,10 +39,15 @@ public class AnimationController : NetworkBehaviour
         // Asigna los hashes de los parámetros de animación para optimizar su uso
         isSwimmingHash = Animator.StringToHash("isSwimming");
         isSpeedingHash = Animator.StringToHash("isSpeeding");
+        isTakingHash = Animator.StringToHash("isTaking");
+        isDeadHash = Animator.StringToHash("isDead");
 
         // Inicializa los estados de las animaciones basados en los valores actuales
         isSwimming = animator.GetBool(isSwimmingHash);
         isSpeeding = animator.GetBool(isSpeedingHash);
+        isTaking = animator.GetBool(isTakingHash);
+        isDead = animator.GetBool(isDeadHash);
+
     }
 
     // Update is called once per frame
@@ -52,6 +65,8 @@ public class AnimationController : NetworkBehaviour
         // Controla el estado de las animaciones de natación y velocidad
         UpdateSwimmingState();
         UpdateSpeedingState();
+        UpdateTakingState();
+        UpdateDeadState();
     }
 
     // Maneja las entradas de las teclas para el movimiento y sprint
@@ -65,6 +80,10 @@ public class AnimationController : NetworkBehaviour
 
         // Detecta si la tecla de sprint está presionada
         shiftPressed = Input.GetKey("left shift");
+
+        // Detecta si la teclas de acciones
+        takePressed = Input.GetKey("e");
+        deadPressed = Input.GetKey("f");
     }
 
     // Actualiza el estado de la animación de natación
@@ -107,6 +126,30 @@ public class AnimationController : NetworkBehaviour
         }
     }
 
+    private void UpdateTakingState()
+    {
+        if (takePressed)
+        {
+            SetTakingState(true);
+        }
+        else
+        {
+            SetTakingState(false);
+        }
+    }
+
+    private void UpdateDeadState()
+    {
+        if (deadPressed)
+        {
+            SetDeadState(true);
+        }
+        else
+        {
+            SetDeadState(false);
+        }
+    }
+
     // Establece el estado de la animación de natación
     private void SetSwimmingState(bool state)
     {
@@ -126,6 +169,26 @@ public class AnimationController : NetworkBehaviour
         {
             animator.SetBool(isSpeedingHash, state);
             isSpeeding = state;
+        }
+    }
+
+    private void SetTakingState(bool state)
+    {
+        // Solo actualiza el estado si es diferente al actual para evitar cambios innecesarios
+        if (isTaking != state)
+        {
+            animator.SetBool(isTakingHash, state);
+            isTaking = state;
+        }
+    }
+
+    private void SetDeadState(bool state)
+    {
+        // Solo actualiza el estado si es diferente al actual para evitar cambios innecesarios
+        if (isDead != state)
+        {
+            animator.SetBool(isDeadHash, state);
+            isDead = state;
         }
     }
 }
