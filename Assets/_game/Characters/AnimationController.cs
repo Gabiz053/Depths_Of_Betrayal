@@ -11,6 +11,7 @@ public class AnimationController : NetworkBehaviour
     private int isSpeedingHash;
     private int isTakingHash;
     private int isDeadHash;
+    private int isHitHash;
 
 
     // Variables para mantener el estado de las animaciones
@@ -18,10 +19,12 @@ public class AnimationController : NetworkBehaviour
     private bool isSpeeding;
     private bool isTaking;
     private bool isDead;
+    private bool isHit;
     private bool isMoving;
     private bool shiftPressed;
     private bool takePressed;
     private bool deadPressed;
+    private bool hitPressed;
 
 
     // Variables que almacenan el estado de las teclas de movimiento
@@ -41,12 +44,14 @@ public class AnimationController : NetworkBehaviour
         isSpeedingHash = Animator.StringToHash("isSpeeding");
         isTakingHash = Animator.StringToHash("isTaking");
         isDeadHash = Animator.StringToHash("isDead");
+        isHitHash = Animator.StringToHash("isHit");
 
         // Inicializa los estados de las animaciones basados en los valores actuales
         isSwimming = animator.GetBool(isSwimmingHash);
         isSpeeding = animator.GetBool(isSpeedingHash);
         isTaking = animator.GetBool(isTakingHash);
         isDead = animator.GetBool(isDeadHash);
+        isHit = animator.GetBool(isHitHash);
 
     }
 
@@ -67,6 +72,7 @@ public class AnimationController : NetworkBehaviour
         UpdateSpeedingState();
         UpdateTakingState();
         UpdateDeadState();
+        UpdateHitState();
     }
 
     // Maneja las entradas de las teclas para el movimiento y sprint
@@ -84,6 +90,7 @@ public class AnimationController : NetworkBehaviour
         // Detecta si la teclas de acciones
         takePressed = Input.GetKey("e");
         deadPressed = Input.GetKey("f");
+        hitPressed = Input.GetKey("g");
     }
 
     // Actualiza el estado de la animación de natación
@@ -150,6 +157,18 @@ public class AnimationController : NetworkBehaviour
         }
     }
 
+    private void UpdateHitState()
+    {
+        if (hitPressed)
+        {
+            SetHitState(true);
+        }
+        else
+        {
+            SetHitState(false);
+        }
+    }
+
     // Establece el estado de la animación de natación
     private void SetSwimmingState(bool state)
     {
@@ -189,6 +208,15 @@ public class AnimationController : NetworkBehaviour
         {
             animator.SetBool(isDeadHash, state);
             isDead = state;
+        }
+    }
+
+    private void SetHitState(bool state)
+    {
+        if (isHit != state)
+        {
+            animator.SetBool(isHitHash, state);
+            isHit = state;
         }
     }
 }
