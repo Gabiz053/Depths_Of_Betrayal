@@ -24,6 +24,11 @@ EditorBuildSettings:
     path: Assets/_game/Scenes/menus.unity
     guid: 69dbb2283608c6844bbaa6412f4dee22
   - enabled: 1
+    path: Assets/_game/Scenes/Gabi.unity
+    guid: a874159177758ea4a82bdd7153ee2b10
+  - enabled: 1
+    path: Assets/_game/Scenes/Samuel.unity
+    guid: 5fb0e801ed041e64f8afd1fc0505e6d1
     path: Assets/_game/Scenes/EscenaDefinitiva.unity
     guid: f3017eabd62c0fa4c97334a37b124dc7
   m_configObjects:

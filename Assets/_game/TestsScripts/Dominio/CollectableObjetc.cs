@@ -1,15 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Unity.Netcode;
+using Unity.Netcode.Components;
 using  UnityEngine;
 
 
-public abstract class CollectableObjetc : MonoBehaviour
+public abstract class CollectableObjetc : NetworkBehaviour, INetworkSerializable
 {
-    public abstract MapSpot Position { get; set; }
+    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    {
+        throw new NotImplementedException();
+    }
 
     public abstract void pickedUp(Character c);
 
+    [ServerRpc]
+    public void UpdatePositionServerRpc(Vector3 newPosition)
+    {
+        transform.GetComponent<NetworkTransform>().transform.position = newPosition;
+    }
 }
