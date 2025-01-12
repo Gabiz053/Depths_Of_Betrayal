@@ -1,48 +1,60 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Volumen : MonoBehaviour
 {
-    public Slider slider;
+    [System.Serializable]
+    public class SliderMutePair
+    {
+        public Slider slider;      // El slider asociado
+        public Image imagenMute;  // La imagen de mute asociada
+    }
+
+    public List<SliderMutePair> sliderMutePairs; // Lista de pares Slider-ImagenMute
     public float sliderValue;
-    public Image imagenMute;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // La primera línea se pone para que el volumen se mantenga en el valor que el usuario 
-        // lo dejó la última vez que jugó y el 0.5 es el valor por defecto
-        slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
-        AudioListener.volume = slider.value;
-        RevisarSiEstoyMute();
+        // Configurar todos los sliders al valor guardado o por defecto
+        sliderValue = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
+        foreach (SliderMutePair pair in sliderMutePairs)
+        {
+            pair.slider.value = sliderValue;
+            RevisarSiEstoyMute(pair); // Asegurarse de que las imágenes reflejen el estado inicial
+        }
+        AudioListener.volume = sliderValue;
     }
 
+    // Función para cambiar el volumen de todos los sliders y sincronizarlos
     public void ChangeSlider(float valor)
     {
+        // Actualizar el valor del volumen y sincronizar todos los sliders
         sliderValue = valor;
         PlayerPrefs.SetFloat("volumenAudio", sliderValue);
-        AudioListener.volume = slider.value;
-        RevisarSiEstoyMute();
-    }
+        AudioListener.volume = sliderValue;
 
-    public void RevisarSiEstoyMute()
-    {
-        if (slider.value == 0)
+        foreach (SliderMutePair pair in sliderMutePairs)
         {
-            imagenMute.enabled = true;
-        }
-        else
-        {
-            imagenMute.enabled = false;
+            if (pair.slider.value != sliderValue) // Evitar bucles innecesarios
+            {
+                pair.slider.value = sliderValue;
+            }
+            RevisarSiEstoyMute(pair); // Actualizar la imagen de mute de cada slider
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Función para revisar si el slider está en mute
+    public void RevisarSiEstoyMute(SliderMutePair pair)
     {
-        
+        // Mostrar u ocultar la imagen de mute según el valor del slider
+        if (pair.slider.value == 0 && pair.imagenMute != null)
+        {
+            pair.imagenMute.enabled = true;
+        }
+        else if (pair.imagenMute != null)
+        {
+            pair.imagenMute.enabled = false;
+        }
     }
 }
