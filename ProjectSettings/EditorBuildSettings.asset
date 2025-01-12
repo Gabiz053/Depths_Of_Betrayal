@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/depth_map.unity
     guid: c6c6f206fdfb38144be2aff47c6d1a30
-  - enabled: 1
+  - enabled: 0
     path: Assets/Trash/Scenes/DepthsMap.unity
     guid: d5581740f5e2dbb4d9a642468ee9c9e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/_game/Scenes/UnderwaterEffect.unity
     guid: 312df58dbe03c714ab3ed422236f09a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/NGO_Minimal_Setup/NGO_Setup.unity
     guid: 218cd64b3f3a58a4b81d09352c5896de
   - enabled: 1

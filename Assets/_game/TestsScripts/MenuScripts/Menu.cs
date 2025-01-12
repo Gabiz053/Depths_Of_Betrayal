@@ -12,11 +12,13 @@ public class Menu : MonoBehaviour
     public GameObject CanvasInsideGame; // Canvas del "Inside Game"
     public GameObject CanvasSettings; // Canvas de opciones
     public GameObject CanvasSettingsInsideGame; // Canvas de ajustes dentro del juego
+    public GameObject CanvasInterfaceInsideGame; // Canvas de pausa del juego
 
     // Control para pausar el juego
     private bool isInGame = false; // Control para saber si el jugador está dentro del juego
     private bool isInsideGameMenuOpen = false; // Control para el estado del menú Inside Game
     private bool isSettingsInsideGameOpen = false; // Control para el estado del menú de ajustes dentro del juego
+    private bool isButtonResume = false; // Control para saber si se presionó el botón de "Resume"
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +36,7 @@ public class Menu : MonoBehaviour
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
     }
 
     // Función para mostrar el canvas "Create Game"
@@ -45,6 +48,7 @@ public class Menu : MonoBehaviour
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
     }
 
     // Función para mostrar el canvas "Join Game"
@@ -56,6 +60,7 @@ public class Menu : MonoBehaviour
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
     }
 
     // Función para mostrar el canvas "Settings"
@@ -67,6 +72,7 @@ public class Menu : MonoBehaviour
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(true);
         CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
     }
 
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
@@ -79,6 +85,7 @@ public class Menu : MonoBehaviour
         CanvasInsideGame.SetActive(false); // No se muestra el menú al entrar al juego
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(true);
         isInsideGameMenuOpen = false;
         isSettingsInsideGameOpen = false;
         UpdateCursorState(); // Asegurar el estado del cursor
@@ -124,6 +131,17 @@ public class Menu : MonoBehaviour
         UpdateCursorState(); // Actualiza el estado del cursor
     }
 
+    // Función para esconder los menús dentro del juego
+    public void ResumeGame()
+    {
+        isButtonResume = true;
+        CanvasInsideGame.SetActive(false);
+        CanvasSettingsInsideGame.SetActive(false);
+        isInsideGameMenuOpen = false;
+        isSettingsInsideGameOpen = false;
+        UpdateCursorState(); // Actualiza el estado del cursor
+    }
+
     // Función para regresar al menú principal
     public void VolverAlMenu()
     {
@@ -143,9 +161,15 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
+        
         // Detectar si se presiona la tecla Esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (isButtonResume)
+            {
+                    isButtonResume = false;
+                    MostrarMenuInsideGame(); // Mostrar el menú "Inside Game"
+            }
             if (isSettingsInsideGameOpen)
             {
                 // Si el menú de ajustes dentro del juego está abierto, cierra ambos menús
