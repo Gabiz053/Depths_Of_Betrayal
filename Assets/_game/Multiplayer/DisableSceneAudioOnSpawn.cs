@@ -13,6 +13,7 @@ public class DisableSceneAudioOnSpawn : NetworkBehaviour
         {
             DisableSceneCameraAudio();
             StopBackgroundMusic();
+            EnablePlayerAudioListener();
         }
     }
 
@@ -46,6 +47,22 @@ public class DisableSceneAudioOnSpawn : NetworkBehaviour
         else
         {
             Debug.LogWarning("No se encontró una instancia de AudioManager.");
+        }
+    }
+
+    private void EnablePlayerAudioListener()
+    {
+        // Activa solo el Audio Listener de la cámara del jugador local
+        AudioListener playerAudioListener = GetComponentInChildren<AudioListener>();
+
+        if (playerAudioListener != null)
+        {
+            playerAudioListener.enabled = true;
+            Debug.Log("AudioListener activado para el jugador local.");
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró un AudioListener en la cámara del jugador.");
         }
     }
 }
