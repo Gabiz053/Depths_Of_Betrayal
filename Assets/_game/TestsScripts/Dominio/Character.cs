@@ -1,75 +1,155 @@
+using System.Collections.Generic;
+using Mono.CSharp;
+using Unity.Netcode;
 using UnityEngine;
 
 
 
-public class Character : MonoBehaviour
+public class Character : NetworkBehaviour
 {
-    public const int MAX_HEALTH = 2;
-    public const int  HEALTH_REDUCTION = 1;
-    public string characterName;
-    public Inventory Inventory { get; set; } = new Inventory();
+    
+    [SerializeField]
+    private const float DISTANCIA = 1.5f;
 
-    public int Health { get; set; } = MAX_HEALTH;
-    public float distancia = 1.5f;
+    [SerializeField]
+    private NetworkVariable<int> PlayerHealth = new NetworkVariable<int>(100);
 
-    //Objeto que hace referencia al Texto de Interaccion
-    // public GameObject TextDetect;
-    //Layer para objetos recolectables
-    private LayerMask collectableLayer;
+    [SerializeField]
+    private List<Crystal> Crystals = new List<Crystal>();
 
-    GameObject ultimoReconocido = null;
+    [SerializeField]
+    private GameObject TextInteractCollectable;
 
+    [SerializeField]
+    private GameObject TextInteractPlatform;
+    
 
-    public virtual void Start(){
+    GameObject collectableSelect = null;
 
-         // Encuentra el Canvas de Press E
-        // TextDetect = GameObject.Find("ObjetoTextoPressE");
-        //Encuentra la Layer Collectable
-        collectableLayer = LayerMask.GetMask("Collectable");
+    void Start(){
 
         //desactiva el texto de interaccion
-        // TextDetect.SetActive(false);
+        TextInteractCollectable.SetActive(false);
+        TextInteractPlatform.SetActive(false);
+
+        PlayerHealth.OnValueChanged += checkHealth;
+
+    }
+
+    private void checkHealth(int oldHealth, int newHealth)
+    {
+        if (newHealth <= 0 )
+        {
+            //INDICAR AL JUEGO QUE ME HE MUERTO
+
+            //INDICAR A LOS CRISTALES QUE VUELVAN A SU SITIO
+            foreach (Crystal c in Crystals)
+            {
+                c.comeback();
+            }
+
+            //TRANSFORMARME EN TORTUGA
+        }
     }
     
 
-    public virtual void Update()
+    void Update()
+    {
+        if (IsClient && IsOwner)
+        {
+            CheckCollectable();
+            CheckPlatform();
+        }
+        
+    }
+
+    private void CheckCollectable()
+    {
+
+        int layerMask = LayerMask.GetMask("Collectable");
+
+        RaycastHit hit = getRayCast(layerMask);
+
+        if (hit.collider != null)
+        {
+            deselect();
+            selectedObject(hit.transform);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                var collectable = hit.collider.transform.GetComponent<CollectableObjetc>();
+                collectable.pickedUp(this);
+                collectable.UpdatePositionServerRpc(new Vector3(0,0,0));
+                AudioManager.instance.playSFX(AudioManager.instance.crystal);
+            }
+        } else {deselect();} 
+    }
+
+    private void CheckPlatform()
+    {
+        int layerMask = LayerMask.GetMask("Platform");
+
+        RaycastHit hit = getRayCast(layerMask);
+
+        if (hit.collider != null)
+        {
+            TextInteractPlatform.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E) && Crystals.Count > 0)
+            {
+                var platform = Platform.instance;
+                platform.UpdateCrystalCountServerRpc(Crystals.Count);
+            }
+
+
+        } else {TextInteractPlatform.SetActive(false);}
+    }
+
+    [ServerRpc]
+    public void UpdatePlayerHealthServerRpc(int amount, ulong clientId)
+    {
+        var client = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.GetComponent<Character>();
+
+        if (client.PlayerHealth.Value > 0 && client.PlayerHealth.Value <= 100)
+        {
+            client.PlayerHealth.Value += amount;
+        }
+    }
+
+    public void addCrystal(Crystal c){
+        Crystals.Add(c);
+    }
+
+    void selectedObject(Transform transform){
+        transform.GetComponent<MeshRenderer>().material.color = Color.green;
+        TextInteractCollectable.SetActive(true);
+        collectableSelect = transform.gameObject;
+    }
+
+    void deselect()
+    {
+        if (collectableSelect){
+            collectableSelect.GetComponent<Renderer>().material.color = Color.magenta;
+            collectableSelect = null;
+            TextInteractCollectable.SetActive(false);
+        }
+    }
+
+    private RaycastHit getRayCast(int layerMask)
     {
         RaycastHit hit;
 
         // Desplazar el origen del raycast para que esté en el centro del personaje (usando el centro del collider)
-        Vector3 rayOrigin = transform.position + Vector3.up * 1.0f; // Ajusta la altura según el tamaño del personaje
+        Vector3 rayOrigin = transform.position + Vector3.up * 1.0f;
 
-        // Dibuja el raycast para depuración desde el centro del personaje
-        Debug.DrawRay(rayOrigin, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+        Debug.DrawRay(rayOrigin, transform.TransformDirection(Vector3.forward) * DISTANCIA, Color.red);
 
-        // Realizar el Raycast desde el centro del personaje (ajustado hacia arriba)
-        if (Physics.Raycast(rayOrigin, transform.TransformDirection(Vector3.forward), out hit, distancia, collectableLayer)) {
-            deselect();
-            selectedObject(hit.transform);
+        Physics.Raycast(rayOrigin, transform.TransformDirection(Vector3.forward), out hit, DISTANCIA, layerMask);
 
-            if (Input.GetKeyDown(KeyCode.E)) {
-                hit.collider.transform.GetComponent<CollectableObjetc>().pickedUp(this);
-                AudioManager.instance.playSFX(AudioManager.instance.crystal);
-            }
-        } else {
-            deselect();
-        }
+        return hit;
     }
 
+    
 
-
-    void selectedObject(Transform transform){
-        transform.GetComponent<MeshRenderer>().material.color = Color.green;
-        // TextDetect.SetActive(true);
-        ultimoReconocido = transform.gameObject;
-    }
-
-    void deselect(){
-        if (ultimoReconocido){
-            ultimoReconocido.GetComponent<Renderer>().material.color = Color.magenta;
-            ultimoReconocido = null;
-            // TextDetect.SetActive(false);
-        }
-    }
+    
 }
 
