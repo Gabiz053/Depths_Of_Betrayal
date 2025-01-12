@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Netcode;
+using System.Collections;
 
 public class RandomSpawnInDonut : NetworkBehaviour
 {
@@ -10,9 +11,11 @@ public class RandomSpawnInDonut : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
+        // Solo ejecuta el teletransporte si es el propietario del objeto
         if (IsOwner)
         {
-            TeleportToRandomLocation();
+            // Llama a la coroutine para asegurarte de que el teletransporte se haga al final
+            StartCoroutine(DelayedTeleport());
         }
     }
 
@@ -20,17 +23,33 @@ public class RandomSpawnInDonut : NetworkBehaviour
     // {
     //     if (!IsOwner) return;
 
-    //     // Detecta si se presiona la tecla J
+    //     // Detecta si se presiona la tecla J para hacer el teletransporte manual
     //     if (Input.GetKeyDown(KeyCode.J))
     //     {
     //         TeleportToRandomLocation();
     //     }
     // }
 
+    private IEnumerator DelayedTeleport()
+    {
+        // Hacemos que el teletransporte sea lo último, de manera que cualquier otro proceso en OnNetworkSpawn se ejecute primero
+        yield return null;
+
+        TeleportToRandomLocation();
+    }
+
     private void TeleportToRandomLocation()
     {
+        // Genera una posición aleatoria dentro del donut
         Vector3 randomPosition = GenerateRandomPositionInDonut(MinRadius, MaxRadius);
         transform.position = randomPosition;
+
+        // Para asegurarte de que el cambio de posición se sincroniza
+        if (IsOwner)
+        {
+            SubmitTeleportRequestServerRpc(randomPosition);
+        }
+
         Debug.Log($"Jugador teletransportado a {randomPosition}");
     }
 
@@ -42,11 +61,18 @@ public class RandomSpawnInDonut : NetworkBehaviour
         // Genera una distancia aleatoria entre los radios mínimo y máximo
         float radius = Mathf.Sqrt(Random.Range(minRadius * minRadius, maxRadius * maxRadius));
 
-        // Calcula las coordenadas en 2D y fija Y a 0 (o ajusta si el terreno tiene altura)
+        // Calcula las coordenadas en 2D y fija Y a 0 (ajústalo si es necesario)
         float x = Mathf.Cos(angle) * radius;
         float z = Mathf.Sin(angle) * radius;
 
         // Devuelve la posición en 3D (asume que Y es 0; ajústalo según sea necesario)
         return new Vector3(x, 0f, z);
+    }
+
+    // RPC para enviar la nueva posición a los demás jugadores
+    [ServerRpc]
+    private void SubmitTeleportRequestServerRpc(Vector3 position)
+    {
+        transform.position = position;
     }
 }
