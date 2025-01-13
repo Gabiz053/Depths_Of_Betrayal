@@ -23,6 +23,7 @@ public class Menu1 : MonoBehaviour
     private bool isSettingsInsideGameOpen = false; // Control para el estado del menú de ajustes dentro del juego
     private bool isControlsMenuOpen = false; // Control para el estado del menú de controles
     private bool isButtonResume = false; // Control para saber si se presionó el botón de "Resume"
+    private bool isStartedGame = false; // Control para saber si se inició el juego
 
     void Start()
     {
@@ -118,6 +119,13 @@ public class Menu1 : MonoBehaviour
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        isStartedGame = true;
+        MostrarMenuInsideGameInicial();
+        // TODO: notificar a todos de que empiecen y hagan MostrarMenuInsideGameInicial();
     }
 
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
@@ -263,14 +271,14 @@ public class Menu1 : MonoBehaviour
     // Función para actualizar el estado del cursor
     private void UpdateCursorState()
     {
-        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen)
+        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen )
         {
             Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
             Cursor.visible = true; // Hace visible el cursor
         }
         else
         {
-            Cursor.lockState = isInGame ? CursorLockMode.Locked : CursorLockMode.None; // Bloquear cursor en el juego
+            Cursor.lockState = (isInGame && isStartedGame) ? CursorLockMode.Locked : CursorLockMode.None; // Bloquear cursor en el juego
             Cursor.visible = !isInGame; // Oculta el cursor si está en el juego
         }
     }
