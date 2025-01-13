@@ -8,7 +8,9 @@ public class Menu1 : MonoBehaviour
     // Referencias a los Canvas
     public GameObject CanvasInitialMenu; // Canvas del menú principal
     public GameObject CanvasCreateGame; // Canvas del "Create Game"
+    public GameObject CanvasStartGame; // Canvas de espera para iniciar la partida
     public GameObject CanvasJoinGame; // Canvas del "Join Game"
+    public GameObject CanvasJoinWait; // Canvas de espera para unirse a una partida
     public GameObject CanvasInsideGame; // Canvas del "Inside Game"
     public GameObject CanvasSettings; // Canvas de opciones
     public GameObject CanvasSettingsInsideGame; // Canvas de ajustes dentro del juego
@@ -21,6 +23,7 @@ public class Menu1 : MonoBehaviour
     private bool isSettingsInsideGameOpen = false; // Control para el estado del menú de ajustes dentro del juego
     private bool isControlsMenuOpen = false; // Control para el estado del menú de controles
     private bool isButtonResume = false; // Control para saber si se presionó el botón de "Resume"
+    private bool isStartedGame = false; // Control para saber si se inició el juego
 
     void Start()
     {
@@ -33,7 +36,9 @@ public class Menu1 : MonoBehaviour
     {
         CanvasInitialMenu.SetActive(true);
         CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
         CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
@@ -46,7 +51,24 @@ public class Menu1 : MonoBehaviour
     {
         CanvasInitialMenu.SetActive(false);
         CanvasCreateGame.SetActive(true);
+        CanvasStartGame.SetActive(false);
         CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
+        CanvasInsideGame.SetActive(false);
+        CanvasSettings.SetActive(false);
+        CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
+        CanvasControlsGame.SetActive(false);
+    }
+
+    // Función para mostrar el canvas "Start Game"
+    public void MostrarMenuStartGame()
+    {
+        CanvasInitialMenu.SetActive(false);
+        CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(true);
+        CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
@@ -59,7 +81,24 @@ public class Menu1 : MonoBehaviour
     {
         CanvasInitialMenu.SetActive(false);
         CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
         CanvasJoinGame.SetActive(true);
+        CanvasJoinWait.SetActive(false);
+        CanvasInsideGame.SetActive(false);
+        CanvasSettings.SetActive(false);
+        CanvasSettingsInsideGame.SetActive(false);
+        CanvasInterfaceInsideGame.SetActive(false);
+        CanvasControlsGame.SetActive(false);
+    }
+
+    // Función para mostrar el canvas "Join Wait"
+    public void MostrarMenuJoinWait()
+    {
+        CanvasInitialMenu.SetActive(false);
+        CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
+        CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(true);
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
@@ -72,12 +111,21 @@ public class Menu1 : MonoBehaviour
     {
         CanvasInitialMenu.SetActive(false);
         CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
         CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(true);
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        isStartedGame = true;
+        MostrarMenuInsideGameInicial();
+        // TODO: notificar a todos de que empiecen y hagan MostrarMenuInsideGameInicial();
     }
 
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
@@ -86,7 +134,9 @@ public class Menu1 : MonoBehaviour
         isInGame = true; // Cambiar el estado a "dentro del juego"
         CanvasInitialMenu.SetActive(false);
         CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
         CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
         CanvasInsideGame.SetActive(false); // No se muestra el menú al entrar al juego
         CanvasSettings.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
@@ -221,14 +271,14 @@ public class Menu1 : MonoBehaviour
     // Función para actualizar el estado del cursor
     private void UpdateCursorState()
     {
-        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen)
+        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen )
         {
             Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
             Cursor.visible = true; // Hace visible el cursor
         }
         else
         {
-            Cursor.lockState = isInGame ? CursorLockMode.Locked : CursorLockMode.None; // Bloquear cursor en el juego
+            Cursor.lockState = (isInGame && isStartedGame) ? CursorLockMode.Locked : CursorLockMode.None; // Bloquear cursor en el juego
             Cursor.visible = !isInGame; // Oculta el cursor si está en el juego
         }
     }
