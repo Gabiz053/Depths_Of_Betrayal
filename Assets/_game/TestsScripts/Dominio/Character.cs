@@ -79,7 +79,6 @@ public class Character : NetworkBehaviour
             {
                 var collectable = hit.collider.transform.GetComponent<CollectableObjetc>();
                 collectable.pickedUp(this);
-                collectable.UpdatePositionServerRpc(new Vector3(0,0,0));
                 AudioManager.instance.playSFX(AudioManager.instance.crystal);
             }
         } else {deselect();} 
@@ -104,7 +103,7 @@ public class Character : NetworkBehaviour
         } else {TextInteractPlatform.SetActive(false);}
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void UpdatePlayerHealthServerRpc(int amount, ulong clientId)
     {
         var client = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.GetComponent<Character>();
