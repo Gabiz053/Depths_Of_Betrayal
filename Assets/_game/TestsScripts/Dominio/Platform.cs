@@ -45,7 +45,7 @@ public class Platform : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void UpdateCrystalCountServerRpc(int deposited)
     {
         CrystalCount.Value =+ deposited;
