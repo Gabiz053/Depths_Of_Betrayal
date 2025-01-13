@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_game/Scenes/Paula.unity
     guid: 5425faed25f06b84ab46c08d19be9a0c
+  - enabled: 1
+    path: Assets/_game/Scenes/EstherYPaula.unity
+    guid: ff3dd3057f5ba984695a42c9ef5f63c1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
