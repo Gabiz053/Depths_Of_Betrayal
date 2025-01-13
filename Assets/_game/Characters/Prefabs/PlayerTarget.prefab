@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 4559156492847940363}
   - component: {fileID: 6547441308741837026}
   - component: {fileID: 2815565769702326164}
-  - component: {fileID: 5289162685576795440}
+  - component: {fileID: 331087921696946159}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -365,7 +365,7 @@ MonoBehaviour:
     CameraRadius: 0.3
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
---- !u!114 &5289162685576795440
+--- !u!114 &331087921696946159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,36 +374,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2812574709265297009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollideAgainst:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  IgnoreTag: Player
-  TransparentLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  MinimumDistanceFromTarget: 1
-  AvoidObstacles:
+  CameraRadius: 0.4
+  Decollision:
     Enabled: 1
-    DistanceLimit: 0
-    MinimumOcclusionTime: 0
-    CameraRadius: 100
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 4294967295
     UseFollowTarget:
       Enabled: 0
       YOffset: 0
-    Strategy: 0
-    MaximumEffort: 4
+    Damping: 0.5
     SmoothingTime: 0
-    Damping: 0
-    DampingWhenOccluded: 0
-  ShotQualityEvaluation:
-    Enabled: 0
-    OptimalDistance: 10
-    NearLimit: 5
-    FarLimit: 30
-    MaxQualityBoost: 0.2
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1 &3161338246532103674
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +647,7 @@ GameObject:
   - component: {fileID: 5656044903337951284}
   - component: {fileID: 146083816015976685}
   - component: {fileID: 6171193345590349446}
+  - component: {fileID: 7522982885705317473}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -671,8 +663,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7897287983677466668}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19765177, y: 0.8022508, z: -0.39128435, w: 0.4052457}
-  m_LocalPosition: {x: -10.385954, y: -11.168906, z: 15.929825}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 48, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -769,6 +761,66 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &7522982885705317473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897287983677466668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 7003195734067633042}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &8172482089381401689
 GameObject:
   m_ObjectHideFlags: 0
