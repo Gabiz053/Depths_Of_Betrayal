@@ -34,5 +34,10 @@ public class StartScript : NetworkBehaviour
     public void Click()
     {
         clicked = true;
+
+        // Genera numero aleatorio entre los jugadores conectados
+        // List<ulong> players = new List<ulong>(NetworkManager.Singleton.ConnectedClients.Keys);
+        // int randomPlayer = Random.Range(0, players.Count);
+        
     }
 }

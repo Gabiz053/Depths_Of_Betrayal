@@ -1,9 +1,11 @@
 using Mono.CSharp;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
 public class GameManager : NetworkBehaviour
 {
+    public Menu1 menu; // Pasarle desde el inspector el canvas_manager (carpeta UI)
 
     [SerializeField]
     private static NetworkVariable<int> deaths = new NetworkVariable<int>(0);
@@ -64,16 +66,18 @@ public class GameManager : NetworkBehaviour
     [ServerRpc]
     public void DiverWinServerRpc()
     {
-        NetworkManager.Singleton.Shutdown();
+        //NetworkManager.Singleton.Shutdown();
 
         //PANTALLA MUESTRA GANAN DIVERS
+        menu.MostrarMenuGameOverPlayerWins();
     }
 
     [ServerRpc]
     public void MonsterWinServerRpc()
     {
-        NetworkManager.Singleton.Shutdown();
+        //NetworkManager.Singleton.Shutdown();
 
-        //PANTALLA MUESTRA GANA MOSNTRUO
+        //PANTALLA MUESTRA GANA MONSTRUO
+        menu.MostrarMenuGameOverMonsterWins();
     }
 }
