@@ -3,6 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 public class StartScript : NetworkBehaviour
 {
+    public Menu1 menu;
     private bool clicked = false;
     public GameObject suelo;
     private NetworkVariable<bool> gameStarted = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
@@ -15,8 +16,8 @@ public class StartScript : NetworkBehaviour
             {
                 Debug.Log("Game started");
                 suelo.SetActive(false);
-                //Menu1 llamar a StartGame()
-                
+                //Menu1 llamar a MostrarMenuInsideGameInicial
+                menu.MostrarMenuInsideGameInicial();
             }
         };
     }
