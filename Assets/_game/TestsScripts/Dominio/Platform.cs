@@ -11,26 +11,6 @@ public class Platform : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<int> CrystalCount = new NetworkVariable<int>();
 
-    //Singleton
-    public static Platform instance;
-
-    //Obtiene el Singleton
-    private void Awake()
-    {
-        if (instance != this)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
 
     void Start()
     {

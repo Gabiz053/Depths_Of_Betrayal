@@ -96,7 +96,7 @@ public class Character : NetworkBehaviour
             TextInteractPlatform.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && Crystals.Count > 0)
             {
-                var platform = Platform.instance;
+                var platform = hit.collider.GetComponent<Platform>();
                 platform.UpdateCrystalCountServerRpc(Crystals.Count);
                 Crystals.Clear();
             }
