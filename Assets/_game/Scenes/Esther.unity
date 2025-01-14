@@ -2074,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2777953307
+  GlobalObjectIdHash: 2373266690
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -2177,7 +2177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: b05623de7e220284b9c17a222876dffb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 54932849
+      value: 3543098485
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: b05623de7e220284b9c17a222876dffb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -6008,7 +6008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 48645bc8a2e9328438928643159390e2, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2353190980
+      value: 261285178
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 48645bc8a2e9328438928643159390e2, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -6086,7 +6086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1524366372
+      value: 3304025220
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -6403,7 +6403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 7921e116dfd29c741a901c7585605cd8, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 405784558
+      value: 3035408389
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 7921e116dfd29c741a901c7585605cd8, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -17754,7 +17754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 755fac904e38abf4e8249856eaead81e, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 43535473
+      value: 3843553159
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 755fac904e38abf4e8249856eaead81e, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -17934,7 +17934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2679951399
+  GlobalObjectIdHash: 93870483
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -18893,7 +18893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 4219080657
+      value: 2450778579
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -20378,7 +20378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 297770c725a7d274eb0ee39f5a3ee974, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 301565789
+      value: 2266206446
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 297770c725a7d274eb0ee39f5a3ee974, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -21661,9 +21661,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartGameScript, Assembly-CSharp
-        m_MethodName: GameStart
+      - m_Target: {fileID: 1323190543}
+        m_TargetAssemblyTypeName: StartScript, Assembly-CSharp
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27850,7 +27850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 8a4a76fe3960bae4582bb0a2dd624ef9, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 942725930
+      value: 2182725677
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 8a4a76fe3960bae4582bb0a2dd624ef9, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -28325,7 +28325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323190540}
   - component: {fileID: 1323190542}
-  - component: {fileID: 1323190541}
+  - component: {fileID: 1323190543}
   m_Layer: 5
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -28352,20 +28352,6 @@ RectTransform:
   m_AnchoredPosition: {x: 960, y: 485.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1323190541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323190539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dad68f9553f77d0429fd2e02a43d6a8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  suelo: {fileID: 1137566207}
 --- !u!114 &1323190542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28378,7 +28364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 281836331
+  GlobalObjectIdHash: 1838610302
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -28391,6 +28377,20 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1323190543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323190539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466e76bea3dcfc94db65864c97a6bbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  suelo: {fileID: 1137566207}
 --- !u!1 &1330086952
 GameObject:
   m_ObjectHideFlags: 0
@@ -28837,7 +28837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: a7bbe7acb160469499adc3e9fb91e82a, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3767170496
+      value: 670481393
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: a7bbe7acb160469499adc3e9fb91e82a, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -28999,7 +28999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 2641062049
+      value: 3235284096
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -29693,7 +29693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: e71a2ccb64d7acf4f96c099a3c303e90, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1030021262
+      value: 672316652
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: e71a2ccb64d7acf4f96c099a3c303e90, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -31553,7 +31553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 464c5126963968546bfe7af3159f25bb, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 927617498
+      value: 2467283201
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 464c5126963968546bfe7af3159f25bb, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -34007,7 +34007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1308684230
+      value: 3696882814
       objectReference: {fileID: 0}
     - target: {fileID: 8103153999708230512, guid: 2ed5be963c1ae264bac8d8cfb64e7064, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
