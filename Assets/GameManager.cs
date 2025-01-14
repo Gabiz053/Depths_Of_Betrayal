@@ -1,8 +1,17 @@
+using Mono.CSharp;
 using Unity.Netcode;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
+
+    [SerializeField]
+    private static NetworkVariable<int> deaths = new NetworkVariable<int>(0);
+
+    [SerializeField]
+    private static NetworkVariable<int> crystals = new NetworkVariable<int>(19);
+
+
     //Singleton
     public static GameManager instance;
 
@@ -20,24 +29,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        deaths.OnValueChanged += checkDeaths;
+        crystals.OnValueChanged += checkCrystals;
+    }
+
+    private void checkDeaths(int oldInt, int newInt)
+    {
+        if (newInt >= NetworkManager.Singleton.ConnectedClients.Count)
+        {
+            MonsterWinServerRpc();
+        }
+    }
+
+    private void checkCrystals(int oldInt, int newInt)
+    {
+        if (newInt >= 20)
+        {
+            DiverWinServerRpc();
+        }
+    }
+
+    public static void notifyDie()
+    {
+        deaths.Value++;
+    }
+
+    public static void notifyCollect(int amount)
+    {
+        crystals.Value += amount;
     }
 
     [ServerRpc]
     public void DiverWinServerRpc()
     {
-        //END GAME
-        
+        NetworkManager.Singleton.Shutdown();
+
+        //PANTALLA MUESTRA GANAN DIVERS
     }
 
     [ServerRpc]
     public void MonsterWinServerRpc()
     {
-        //END GAME
+        NetworkManager.Singleton.Shutdown();
 
+        //PANTALLA MUESTRA GANA MOSNTRUO
     }
 }

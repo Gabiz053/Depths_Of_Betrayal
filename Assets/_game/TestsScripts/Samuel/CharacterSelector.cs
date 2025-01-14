@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+
 using QFSW.QC;
 using Unity.Netcode;
 using UnityEngine;
@@ -10,9 +10,6 @@ public class CharacterSelection : NetworkBehaviour
 
     void Start()
     {
-        int randomIndex = Random.Range(0, players.Length);
-
-        SpawnPlayerServerRpc(randomIndex);
     }
 
     [ServerRpc]
