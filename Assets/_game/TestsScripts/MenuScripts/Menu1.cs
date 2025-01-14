@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Acceder a las escenas
+using UnityEngine.Video; // Acceder a los videos
 
 public class Menu1 : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Menu1 : MonoBehaviour
     public GameObject CanvasInterfaceInsideGame; // Canvas de pausa del juego
     public GameObject CanvasControlsGame; // Canvas de controles del juego
 
+    // Animacion de intro
+    public GameObject CanvasVideo;
+    public VideoPlayer videoPlayer;
+
     // Control para pausar el juego
     private bool isInGame = false; // Control para saber si el jugador está dentro del juego
     private bool isInsideGameMenuOpen = false; // Control para el estado del menú Inside Game
@@ -26,6 +31,11 @@ public class Menu1 : MonoBehaviour
 
     void Start()
     {
+        // Ensure the VideoPlayer component is assigned
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer component is not assigned!");
+        }
         MostrarMenuInicial();
         UpdateCursorState(); // Asegurarse de que el estado del cursor sea correcto al inicio
     }
@@ -43,6 +53,7 @@ public class Menu1 : MonoBehaviour
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+        CanvasVideo.SetActive(false);
     }
 
     // Función para mostrar el canvas "Create Game"
@@ -58,13 +69,49 @@ public class Menu1 : MonoBehaviour
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+        CanvasVideo.SetActive(false);
     }
 
     // Función para mostrar el canvas "Start Game"
-    public void MostrarMenuStartGame()
+     public void MostrarMenuStartGame()
     {
-        CanvasInitialMenu.SetActive(false);
+        // Desactivar y activar los Canvases relevantes
         CanvasCreateGame.SetActive(false);
+        CanvasVideo.SetActive(true);
+
+        // Ensure the VideoPlayer component is assigned
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer component is not assigned!");
+            return;
+        }
+
+        // Reproducir el video y comenzar la corrutina
+        videoPlayer.Prepare();
+        StartCoroutine(WaitForVideoToEnd());
+    }
+
+    private System.Collections.IEnumerator WaitForVideoToEnd()
+    {
+        Debug.Log("Esperando video");
+        // Asegúrate de que el video se haya cargado
+        while (!videoPlayer.isPrepared)
+        {
+           yield return null; // Espera hasta que el video esté listo
+        }
+
+        // Reproducir el video
+        videoPlayer.Play();
+
+        // Esperar hasta que el video termine
+        while (videoPlayer.isPlaying)
+        {
+            yield return null; // Espera cada frame mientras se reproduce
+        }
+        Debug.Log("Terminado video");
+        // Cuando el video termine, desactivar el CanvasVideo y mostrar otros Canvases
+        CanvasVideo.SetActive(false);
+        CanvasInitialMenu.SetActive(false);
         CanvasStartGame.SetActive(true);
         CanvasJoinGame.SetActive(false);
         CanvasJoinWait.SetActive(false);
@@ -88,15 +135,49 @@ public class Menu1 : MonoBehaviour
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+        CanvasVideo.SetActive(false);
     }
 
     // Función para mostrar el canvas "Join Wait"
     public void MostrarMenuJoinWait()
     {
+        CanvasJoinGame.SetActive(false);
+        CanvasVideo.SetActive(true);
+
+        // Ensure the VideoPlayer component is assigned
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer component is not assigned!");
+            return;
+        }
+
+        videoPlayer.Prepare();
+        StartCoroutine(WaitForVideoToEnd1());
+
+
+    }
+
+    private System.Collections.IEnumerator WaitForVideoToEnd1()
+    {
+        // Asegúrate de que el video se haya cargado
+        while (!videoPlayer.isPrepared)
+        {
+           yield return null; // Espera hasta que el video esté listo
+        }
+
+        // Reproducir el video
+        videoPlayer.Play();
+
+        // Esperar hasta que el video termine
+        while (videoPlayer.isPlaying)
+        {
+            yield return null; // Espera cada frame mientras se reproduce
+        }
+        // Cuando el video termine, desactivar el CanvasVideo y mostrar otros Canvases
+        CanvasVideo.SetActive(false);
         CanvasInitialMenu.SetActive(false);
         CanvasCreateGame.SetActive(false);
         CanvasStartGame.SetActive(false);
-        CanvasJoinGame.SetActive(false);
         CanvasJoinWait.SetActive(true);
         CanvasInsideGame.SetActive(false);
         CanvasSettings.SetActive(false);
@@ -118,6 +199,7 @@ public class Menu1 : MonoBehaviour
         CanvasSettingsInsideGame.SetActive(false);
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
+        CanvasVideo.SetActive(false);
     }
 
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
@@ -137,6 +219,7 @@ public class Menu1 : MonoBehaviour
         isInsideGameMenuOpen = false;
         isSettingsInsideGameOpen = false;
         isControlsMenuOpen = false;
+        CanvasVideo.SetActive(false);
         UpdateCursorState(); // Asegurar el estado del cursor
     }
 
@@ -149,6 +232,7 @@ public class Menu1 : MonoBehaviour
         isInsideGameMenuOpen = true;
         isSettingsInsideGameOpen = false;
         isControlsMenuOpen = false;
+        CanvasVideo.SetActive(false);
         UpdateCursorState(); // Asegura el estado del cursor
     }
 
