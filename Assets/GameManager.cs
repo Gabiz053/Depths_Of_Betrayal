@@ -9,7 +9,7 @@ public class GameManager : NetworkBehaviour
     private static NetworkVariable<int> deaths = new NetworkVariable<int>(0);
 
     [SerializeField]
-    private static NetworkVariable<int> crystals = new NetworkVariable<int>(19);
+    private static NetworkVariable<int> crystals = new NetworkVariable<int>(0);
 
 
     //Singleton
@@ -37,7 +37,7 @@ public class GameManager : NetworkBehaviour
 
     private void checkDeaths(int oldInt, int newInt)
     {
-        if (newInt >= NetworkManager.Singleton.ConnectedClients.Count)
+        if (newInt >= NetworkManager.Singleton.ConnectedClients.Count - 1)
         {
             MonsterWinServerRpc();
         }

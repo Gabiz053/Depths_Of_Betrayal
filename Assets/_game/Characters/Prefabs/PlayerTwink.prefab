@@ -2559,13 +2559,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8168210066310563348, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-    - {fileID: 2832306871432646645, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-    - {fileID: 5596357579063294102, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-    - {fileID: 1457871457528191112, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-    - {fileID: 5557280947666536937, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-    - {fileID: 36500286739868830, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7113178350710717500, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
@@ -2594,7 +2588,7 @@ PrefabInstance:
       addedObject: {fileID: 7313624717443821039}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 7860295730036196955}
     - targetCorrespondingSourceObject: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       insertIndex: -1
@@ -2625,7 +2619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 253025493
+  GlobalObjectIdHash: 1768148783
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
