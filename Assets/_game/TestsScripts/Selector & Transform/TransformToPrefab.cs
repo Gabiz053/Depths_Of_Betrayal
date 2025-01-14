@@ -1,8 +1,9 @@
 using System.Linq;
 using System.Transactions;
+using Unity.Netcode;
 using UnityEngine;
 
-public class TransformToPrefab : MonoBehaviour
+public class TransformToPrefab : NetworkBehaviour
 {
     public GameObject[] prefabs;  // Referencia al prefab
 

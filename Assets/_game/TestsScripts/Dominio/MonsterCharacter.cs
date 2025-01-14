@@ -6,14 +6,11 @@ public class MonsterCharacter : NetworkBehaviour
 {
 
     [SerializeField]
-    private const float DISTANCIA = 1.5f;
+    private const float DISTANCIA = 3.5f;
 
 
     [SerializeField]
     private NetworkVariable<int> Kills = new NetworkVariable<int>();
-
-    public bool isTransformed = false;
-
     
     
     public void Start()
@@ -54,12 +51,10 @@ public class MonsterCharacter : NetworkBehaviour
     {
         RaycastHit hit;
 
-        // Desplazar el origen del raycast para que esté en el centro del personaje (usando el centro del collider)
-        Vector3 rayOrigin = transform.position + Vector3.up * 1.0f;
 
-        Debug.DrawRay(rayOrigin, transform.TransformDirection(Vector3.forward) * DISTANCIA, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * DISTANCIA, Color.red);
 
-        Physics.Raycast(rayOrigin, transform.TransformDirection(Vector3.forward), out hit, DISTANCIA, layerMask);
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, DISTANCIA, layerMask);
 
         return hit;
     }
