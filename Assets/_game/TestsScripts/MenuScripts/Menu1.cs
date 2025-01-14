@@ -121,11 +121,12 @@ public class Menu1 : MonoBehaviour
         CanvasControlsGame.SetActive(false);
     }
 
+// Funcion que tienen que ejecutar todos los jugadores para iniciar el juego
     public void StartGame()
     {
         isStartedGame = true;
         MostrarMenuInsideGameInicial();
-        // TODO: notificar a todos de que empiecen y hagan MostrarMenuInsideGameInicial();
+        
     }
 
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
