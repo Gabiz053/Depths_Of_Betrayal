@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   diverPrefab: {fileID: 6065117010696018610}
-  alternativePrefab: {fileID: 0}
+  alternativePrefab: {fileID: 953227445912678575}
 --- !u!1001 &1271998387261975441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,11 +241,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 529077665674161343, guid: adb14b9d4a0413345869a2481599f1bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4299998
+      value: 0.4000001
       objectReference: {fileID: 0}
     - target: {fileID: 529077665674161343, guid: adb14b9d4a0413345869a2481599f1bb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.0039997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5011543223079383331, guid: adb14b9d4a0413345869a2481599f1bb, type: 3}
       propertyPath: m_Name
@@ -411,11 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 134626908670397007, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4000001
+      value: 3.23
       objectReference: {fileID: 0}
     - target: {fileID: 134626908670397007, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.0039997
       objectReference: {fileID: 0}
     - target: {fileID: 331635878411613336, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_Enabled
@@ -507,6 +507,11 @@ PrefabInstance:
 --- !u!4 &464253268679682581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4882113877939779138, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
+  m_PrefabInstance: {fileID: 5021965860863843415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &953227445912678575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5227289487979752696, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
   m_PrefabInstance: {fileID: 5021965860863843415}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8845567282040108888
