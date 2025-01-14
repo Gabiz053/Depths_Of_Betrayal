@@ -8,7 +8,7 @@ public class ShapeShifterController : NetworkBehaviour
     private GameObject diverPrefab;   // Referencia a la skin del humano
 
     [SerializeField]
-    private GameObject alternativePrefab; // Referencia al otro prefab
+    public GameObject alternativePrefab; // Referencia al otro prefab
 
 
     private bool isMonster = false; // Estado inicial: forma humana
