@@ -17,6 +17,11 @@ public class Menu1 : MonoBehaviour
     public GameObject CanvasSettingsInsideGame; // Canvas de ajustes dentro del juego
     public GameObject CanvasInterfaceInsideGame; // Canvas de pausa del juego
     public GameObject CanvasControlsGame; // Canvas de controles del juego
+    public GameObject CanvasIsMonster; // Canvas de reparto de roles (Monster)
+    public GameObject CanvasIsPlayer; // Canvas de reparto de roles (Player)
+    public GameObject CanvasGameoverMonsterWins; // Canvas de Game Over (Monster Wins)
+    public GameObject CanvasGameoverPlayerWins; // Canvas de Game Over (Player Wins)
+    public GameObject CanvasGameoverTimeout; // Canvas de Game Over (Timeout)
 
     // Animacion de intro
     public GameObject CanvasVideo;
@@ -54,6 +59,11 @@ public class Menu1 : MonoBehaviour
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
         CanvasVideo.SetActive(false);
+        CanvasIsMonster.SetActive(false);
+        CanvasIsPlayer.SetActive(false);
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(false);
     }
 
     // Función para mostrar el canvas "Create Game"
@@ -70,6 +80,11 @@ public class Menu1 : MonoBehaviour
         CanvasInterfaceInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
         CanvasVideo.SetActive(false);
+        CanvasIsMonster.SetActive(false);
+        CanvasIsPlayer.SetActive(false);
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(false);
     }
 
     // Función para mostrar el canvas "Start Game"
@@ -202,6 +217,49 @@ public class Menu1 : MonoBehaviour
         CanvasVideo.SetActive(false);
     }
 
+// REPARTO ROLES
+    public void MostrarMenuIsMonster()
+    {
+        CanvasInitialMenu.SetActive(false);
+        CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
+        CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
+        CanvasInsideGame.SetActive(false);
+        CanvasIsMonster.SetActive(true);
+        CanvasIsPlayer.SetActive(false);
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(false);
+        EsconderMenusDentroDelJuego();
+    }
+
+    public void MostrarMenuIsPlayer()
+    {
+        CanvasInitialMenu.SetActive(false);
+        CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
+        CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
+        CanvasInsideGame.SetActive(false);
+        CanvasIsMonster.SetActive(false);
+        CanvasIsPlayer.SetActive(true);
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(false);
+        EsconderMenusDentroDelJuego();
+    }
+
+    private IEnumerator OcultarMenuRoles()
+    {
+        yield return new WaitForSeconds(5);
+        CanvasIsMonster.SetActive(false);
+        CanvasIsPlayer.SetActive(false);
+        MostrarMenuInsideGameInicial();
+    }
+
+
+// DENTRO DEL JUEGO
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
     public void MostrarMenuInsideGameInicial()
     {
@@ -314,6 +372,34 @@ public class Menu1 : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Aquí se cierra el juego");
+    }
+
+// GAME OVER
+    // Función para mostrar el canvas "Game Over" (Monster Wins)
+    public void MostrarMenuGameOverMonsterWins()
+    {
+        EsconderMenusDentroDelJuego();
+        CanvasGameoverMonsterWins.SetActive(true);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(false);
+    }
+
+    // Función para mostrar el canvas "Game Over" (Player Wins)
+    public void MostrarMenuGameOverPlayerWins()
+    {
+        EsconderMenusDentroDelJuego();
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(true);
+        CanvasGameoverTimeout.SetActive(false);
+    }
+
+    // Función para mostrar el canvas "Game Over" (Timeout)
+    public void MostrarMenuGameOverTimeout()
+    {
+        EsconderMenusDentroDelJuego();
+        CanvasGameoverMonsterWins.SetActive(false);
+        CanvasGameoverPlayerWins.SetActive(false);
+        CanvasGameoverTimeout.SetActive(true);
     }
 
     void Update()
