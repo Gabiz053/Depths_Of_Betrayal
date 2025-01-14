@@ -1,23 +1,23 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class ShapeShifterController : MonoBehaviour
+public class ShapeShifterController : NetworkBehaviour
 {
-    public GameObject humanSkin;   // Referencia a la skin del humano
-    public GameObject monsterSkin; // Referencia a la skin del monstruo
 
-    public float speed;       // Velocidad de movimiento
+    [SerializeField]
+    private GameObject diverPrefab;   // Referencia a la skin del humano
 
-    private CharacterController characterController; // Controlador de personaje
+    [SerializeField]
+    private GameObject alternativePrefab; // Referencia al otro prefab
+
+
     private bool isMonster = false; // Estado inicial: forma humana
 
     void Start()
     {
-        // Obtener el componente CharacterController
-        characterController = GetComponent<CharacterController>();
-
         // Activar la skin inicial
-        humanSkin.SetActive(true);
-        monsterSkin.SetActive(false);
+        diverPrefab.SetActive(true);
+        alternativePrefab.SetActive(false);
     }
 
     void Update()
@@ -34,22 +34,8 @@ public class ShapeShifterController : MonoBehaviour
             isMonster = !isMonster;
 
             // Alternar las skins
-            humanSkin.SetActive(!isMonster);
-            monsterSkin.SetActive(isMonster);
-
-            // Ajustar las propiedades del CharacterController
-            if (isMonster)
-            {
-                characterController.height = 3.0f;  // Tamaño para monstruo
-                characterController.center = new Vector3(0, 1.5f, 0); // Centrado para monstruo
-                speed = 3f; // Reducir la velocidad del monstruo
-            }
-            else
-            {
-                characterController.height = 2.0f;  // Tamaño para humano
-                characterController.center = new Vector3(0, 1.0f, 0); // Centrado para humano
-                speed = 5f; // Velocidad normal para humano
-            }
+            diverPrefab.SetActive(!isMonster);
+            alternativePrefab.SetActive(isMonster);
         }
     }
 }

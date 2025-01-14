@@ -49,6 +49,7 @@ public class Platform : NetworkBehaviour
     public void UpdateCrystalCountServerRpc(int deposited)
     {
         CrystalCount.Value =+ deposited;
+        GameManager.notifyCollect(deposited);
     }
 
     
