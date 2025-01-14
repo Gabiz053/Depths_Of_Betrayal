@@ -65,8 +65,9 @@ public class RandomSpawnInDonut : NetworkBehaviour
         float x = Mathf.Cos(angle) * radius;
         float z = Mathf.Sin(angle) * radius;
 
-        // Devuelve la posición en 3D (asume que Y es 0; ajústalo según sea necesario)
-        return new Vector3(x, 0f, z);
+        // Devuelve la posición en 3D 
+        //Spawnea en el lobby, en la posición y = 50f
+        return new Vector3(x, 50f, z);
     }
 
     // RPC para enviar la nueva posición a los demás jugadores

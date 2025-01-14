@@ -12,16 +12,13 @@ public class MonsterCharacter : NetworkBehaviour
     [SerializeField]
     private NetworkVariable<int> Kills = new NetworkVariable<int>();
 
-    public GameObject monsterPrefab;
-    public GameObject characterPrefab;
-
     public bool isTransformed = false;
 
     
     
-    public void Start(){
+    public void Start()
+    {
 
-        monsterPrefab.SetActive(false);
     }
     
     public void Update(){
@@ -44,30 +41,13 @@ public class MonsterCharacter : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 var playerhit = hit.transform.GetComponent<Character>();
+
                 if (playerhit != null)
                 {
-                    playerhit.UpdatePlayerHealthServerRpc(-50, hit.transform.GetComponent<NetworkObject>().OwnerClientId);
+                    playerhit.UpdatePlayerHealthServerRpc(-50);
                 }
             }
         } 
-    }
-
-    public void Transform()
-    {
-        if (!isTransformed){
-
-            monsterPrefab.SetActive(true);
-            characterPrefab.SetActive(false);
-
-            isTransformed = true;
-            
-        } else {
-
-            monsterPrefab.SetActive(false);
-            characterPrefab.SetActive(true);
-
-            isTransformed = false;
-        }
     }
 
     private RaycastHit getRayCast(int layerMask)

@@ -2450,21 +2450,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1852763564283019003, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       propertyPath: m_Name
-      value: PlayerTarget Variant
+      value: PlayerAfricanPrincess
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812574709265297009, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2832306871432646645, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3691310862
       objectReference: {fileID: 0}
+    - target: {fileID: 3161338246532103674, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617490853258998877, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502377471753563314, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921904281501063523, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7003195734067633042, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7003195734067633042, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.4000001
       objectReference: {fileID: 0}
     - target: {fileID: 7003195734067633042, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2518,6 +2546,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7897287983677466668, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172482089381401689, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2545,10 +2581,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7113178350710717500, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3747436194257053502}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2452326122844178201}
   m_SourcePrefab: {fileID: 100100000, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
 --- !u!4 &676992881225767504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7113178350710717500, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
   m_PrefabInstance: {fileID: 7769342081510827628}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5204291212863070306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2588272625093543438, guid: 14cc2fee21de7094e8e4a4db5a497ad5, type: 3}
+  m_PrefabInstance: {fileID: 7769342081510827628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-2452326122844178201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204291212863070306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cadae6aada75df418d0bab7ac2bee09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  PlayerHealth:
+    m_InternalValue: 100
+  Crystals: []
+  TextInteractCollectable: {fileID: 4531768346290214417, guid: 06829e85adfd05544973a75e411dd9a7, type: 3}
+  TextInteractPlatform: {fileID: 6084722305649434879, guid: dd2165291aa6a374a8c09268a2183d3a, type: 3}

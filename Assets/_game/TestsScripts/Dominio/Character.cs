@@ -41,6 +41,7 @@ public class Character : NetworkBehaviour
         if (newHealth <= 0 )
         {
             //INDICAR AL JUEGO QUE ME HE MUERTO
+            GameManager.notifyDie();
 
             //INDICAR A LOS CRISTALES QUE VUELVAN A SU SITIO
             foreach (Crystal c in Crystals)
@@ -79,7 +80,6 @@ public class Character : NetworkBehaviour
             {
                 var collectable = hit.collider.transform.GetComponent<CollectableObjetc>();
                 collectable.pickedUp(this);
-                collectable.UpdatePositionServerRpc(new Vector3(0,0,0));
                 AudioManager.instance.playSFX(AudioManager.instance.crystal);
             }
         } else {deselect();} 
@@ -98,21 +98,22 @@ public class Character : NetworkBehaviour
             {
                 var platform = Platform.instance;
                 platform.UpdateCrystalCountServerRpc(Crystals.Count);
+                Crystals.Clear();
             }
 
 
         } else {TextInteractPlatform.SetActive(false);}
     }
 
-    [ServerRpc]
-    public void UpdatePlayerHealthServerRpc(int amount, ulong clientId)
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdatePlayerHealthServerRpc(int amount)
     {
-        var client = NetworkManager.Singleton.ConnectedClients[clientId].PlayerObject.GetComponent<Character>();
-
-        if (client.PlayerHealth.Value > 0 && client.PlayerHealth.Value <= 100)
+        
+        if (PlayerHealth.Value > 0 && PlayerHealth.Value <= 100)
         {
-            client.PlayerHealth.Value += amount;
+            PlayerHealth.Value += amount;
         }
+        
     }
 
     public void addCrystal(Crystal c){

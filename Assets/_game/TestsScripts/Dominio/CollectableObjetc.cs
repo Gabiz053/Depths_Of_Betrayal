@@ -1,21 +1,14 @@
-﻿using System;
-using Unity.Netcode;
+﻿using Unity.Netcode;
 using Unity.Netcode.Components;
-using  UnityEngine;
 
 
-public abstract class CollectableObjetc : NetworkBehaviour, INetworkSerializable
+public abstract class CollectableObjetc : NetworkBehaviour
 {
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
-    {
-        throw new NotImplementedException();
-    }
-
     public abstract void pickedUp(Character c);
 
-    [ServerRpc]
-    public void UpdatePositionServerRpc(Vector3 newPosition)
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdatePositionServerRpc(UnityEngine.Vector3 position)
     {
-        transform.GetComponent<NetworkTransform>().transform.position = newPosition;
+        transform.position = position;
     }
 }
