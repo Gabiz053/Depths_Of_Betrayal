@@ -47,15 +47,18 @@ public class ToggleCameraView : NetworkBehaviour
     private void InitializeCamera()
     {
         // Configura la cámara para comenzar en tercera persona
-        ActivateThirdPersonView();
+        ActivateFirstPersonView();
     }
 
-    private void ActivateThirdPersonView()
+    public void ActivateThirdPersonView()
     {
         isFirstPerson = false;
 
         // Asigna el target de seguimiento para tercera persona
         virtualCamera.Follow = thirdPersonFollowTarget;
+
+        // Actualiza manualmente la posición y orientación de la cámara
+        virtualCamera.OnTargetObjectWarped(thirdPersonFollowTarget, thirdPersonFollowTarget.position - virtualCamera.transform.position);
 
         // Muestra el modelo del personaje en tercera persona
         if (characterModel != null)
@@ -66,12 +69,15 @@ public class ToggleCameraView : NetworkBehaviour
         Debug.Log("Vista de tercera persona activada.");
     }
 
-    private void ActivateFirstPersonView()
+    public void ActivateFirstPersonView()
     {
         isFirstPerson = true;
 
         // Asigna el target de seguimiento para primera persona
         virtualCamera.Follow = firstPersonFollowTarget;
+
+        // Actualiza manualmente la posición y orientación de la cámara
+        virtualCamera.OnTargetObjectWarped(firstPersonFollowTarget, firstPersonFollowTarget.position - virtualCamera.transform.position);
 
         // Oculta el modelo del personaje en primera persona
         if (characterModel != null)
