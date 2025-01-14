@@ -40,7 +40,7 @@ public class PlayerSelector : NetworkBehaviour
     {
         int index = Choose();
 
-        GameObject Player = Instantiate(Players[3]);
+        GameObject Player = Instantiate(Players[index]);
 
         RemovePlayer(index);
 
