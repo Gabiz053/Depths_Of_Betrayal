@@ -95,7 +95,6 @@ public class StartScript : NetworkBehaviour
     private void EndGame()
     {
         Debug.Log("Game over! Time has run out.");
-        // Aquí puedes añadir lógica para finalizar el juego, como mostrar un menú de fin de partida.
         menu.MostrarMenuGameOverTimeout();
     }
 

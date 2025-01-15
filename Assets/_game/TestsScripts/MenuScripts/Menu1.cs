@@ -436,7 +436,7 @@ public class Menu1 : MonoBehaviour
     void Update()
     {
         // Detectar si se presiona la tecla Esc
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (isButtonResume)
             {
