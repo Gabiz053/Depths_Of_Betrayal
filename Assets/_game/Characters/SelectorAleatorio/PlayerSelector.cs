@@ -23,7 +23,7 @@ public class PlayerSelector : NetworkBehaviour
         //ChooseMonster();
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void GivePlayerServerRpc(ulong clientId)
     {
         int index = Choose();
@@ -35,6 +35,8 @@ public class PlayerSelector : NetworkBehaviour
         NetworkObject network = Player.GetComponent<NetworkObject>();
 
         network.SpawnWithOwnership(clientId);
+
+        Debug.Log(clientId);
 
     }
     
