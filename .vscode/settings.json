@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Depths_Of_Betrayal-samuel.sln"
+    "dotnet.defaultSolution": "Depths_Of_Betrayal.sln"
 }
