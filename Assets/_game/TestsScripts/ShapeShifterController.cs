@@ -22,7 +22,11 @@ public class ShapeShifterController : NetworkBehaviour
 
     void Update()
     {
-        HandleTransformation();
+
+        if (IsOwner)
+        {
+            HandleTransformation();
+        }
     }
 
 
@@ -36,7 +40,24 @@ public class ShapeShifterController : NetworkBehaviour
             // Alternar las skins
             diverPrefab.SetActive(!isMonster);
             alternativePrefab.SetActive(isMonster);
+
+            UpdateTransformationServerRpc(isMonster);
         }
+    }
+
+    [ServerRpc]
+    void UpdateTransformationServerRpc(bool isMonsterState)
+    {
+        UpdateTransformationClientRpc(isMonsterState);
+    }
+
+    [ClientRpc]
+    void UpdateTransformationClientRpc(bool isMonsterState)
+    {
+        // Aplicar el cambio a todos los clientes
+        isMonster = isMonsterState;
+        diverPrefab.SetActive(!isMonster);
+        alternativePrefab.SetActive(isMonster);
     }
 }
 
