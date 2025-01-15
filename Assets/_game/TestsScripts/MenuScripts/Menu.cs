@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Acceder a las escenas
 
 public class Menu : MonoBehaviour
 {
@@ -161,14 +158,14 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        
+
         // Detectar si se presiona la tecla Esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isButtonResume)
             {
-                    isButtonResume = false;
-                    MostrarMenuInsideGame(); // Mostrar el menú "Inside Game"
+                isButtonResume = false;
+                MostrarMenuInsideGame(); // Mostrar el menú "Inside Game"
             }
             if (isSettingsInsideGameOpen)
             {

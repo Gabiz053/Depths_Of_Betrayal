@@ -75,7 +75,7 @@ public class cosasOnline : NetworkBehaviour
                 texto = "Hola",
             };
 
-            TestClientRpc(new ClientRpcParams {Send = new ClientRpcSendParams {TargetClientIds = new List<ulong> { 1 }}});
+            TestClientRpc(new ClientRpcParams { Send = new ClientRpcSendParams { TargetClientIds = new List<ulong> { 1 } } });
 
 
         }
@@ -83,13 +83,15 @@ public class cosasOnline : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void TestServerRpc(ServerRpcParams serverRpcParams) {
+    private void TestServerRpc(ServerRpcParams serverRpcParams)
+    {
         // Aqui se puede hacer algo con el valor
         Debug.Log("TestServer (solo el server ejecuta): " + OwnerClientId + "; " + serverRpcParams.Receive.SenderClientId);
     }
 
     [ClientRpc]
-    private void TestClientRpc(ClientRpcParams clientRpcParams) {
+    private void TestClientRpc(ClientRpcParams clientRpcParams)
+    {
         // Aqui se puede hacer algo con el valor
         Debug.Log("TestClient (solo clientes ejecutan): " + numero.Value.valor);
     }

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5351219438515258404}
   - component: {fileID: 6291756211157646480}
   - component: {fileID: 844056382352812728}
-  - component: {fileID: 1836371434279971220}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -176,21 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
---- !u!114 &1836371434279971220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8192116716279788501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8540b3ab37e47de4d926ee20cf5df365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  diverPrefab: {fileID: 6065117010696018610}
-  alternativePrefab: {fileID: 953227445912678575}
 --- !u!1001 &1271998387261975441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,11 +267,6 @@ PrefabInstance:
 --- !u!4 &1459105061602821367 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 403287231186415462, guid: adb14b9d4a0413345869a2481599f1bb, type: 3}
-  m_PrefabInstance: {fileID: 1271998387261975441}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6065117010696018610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5011543223079383331, guid: adb14b9d4a0413345869a2481599f1bb, type: 3}
   m_PrefabInstance: {fileID: 1271998387261975441}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3209427738664249970
@@ -507,11 +486,6 @@ PrefabInstance:
 --- !u!4 &464253268679682581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4882113877939779138, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
-  m_PrefabInstance: {fileID: 5021965860863843415}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &953227445912678575 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5227289487979752696, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
   m_PrefabInstance: {fileID: 5021965860863843415}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8845567282040108888

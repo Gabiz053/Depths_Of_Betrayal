@@ -1,13 +1,11 @@
 using System.Collections.Generic;
-using Mono.CSharp;
 using Unity.Netcode;
 using UnityEngine;
 
 
-
 public class Character : NetworkBehaviour
 {
-    
+
     [SerializeField]
     private const float DISTANCIA = 1.5f;
 
@@ -22,11 +20,12 @@ public class Character : NetworkBehaviour
 
     [SerializeField]
     private GameObject TextInteractPlatform;
-    
+
 
     GameObject collectableSelect = null;
 
-    void Start(){
+    void Start()
+    {
 
         //desactiva el texto de interaccion
         TextInteractCollectable.SetActive(false);
@@ -38,7 +37,7 @@ public class Character : NetworkBehaviour
 
     private void checkHealth(int oldHealth, int newHealth)
     {
-        if (newHealth <= 0 )
+        if (newHealth <= 0)
         {
             //INDICAR AL JUEGO QUE ME HE MUERTO
             GameManager.notifyDie();
@@ -52,7 +51,7 @@ public class Character : NetworkBehaviour
             //TRANSFORMARME EN TORTUGA
         }
     }
-    
+
 
     void Update()
     {
@@ -61,7 +60,7 @@ public class Character : NetworkBehaviour
             CheckCollectable();
             CheckPlatform();
         }
-        
+
     }
 
     private void CheckCollectable()
@@ -82,7 +81,8 @@ public class Character : NetworkBehaviour
                 collectable.pickedUp(this);
                 AudioManager.instance.playSFX(AudioManager.instance.crystal);
             }
-        } else {deselect();} 
+        }
+        else { deselect(); }
     }
 
     private void CheckPlatform()
@@ -96,31 +96,34 @@ public class Character : NetworkBehaviour
             TextInteractPlatform.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E) && Crystals.Count > 0)
             {
-                var platform = Platform.instance;
+                var platform = hit.collider.GetComponent<Platform>();
                 platform.UpdateCrystalCountServerRpc(Crystals.Count);
                 Crystals.Clear();
             }
 
 
-        } else {TextInteractPlatform.SetActive(false);}
+        }
+        else { TextInteractPlatform.SetActive(false); }
     }
 
     [ServerRpc(RequireOwnership = false)]
     public void UpdatePlayerHealthServerRpc(int amount)
     {
-        
+
         if (PlayerHealth.Value > 0 && PlayerHealth.Value <= 100)
         {
             PlayerHealth.Value += amount;
         }
-        
+
     }
 
-    public void addCrystal(Crystal c){
+    public void addCrystal(Crystal c)
+    {
         Crystals.Add(c);
     }
 
-    void selectedObject(Transform transform){
+    void selectedObject(Transform transform)
+    {
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
         TextInteractCollectable.SetActive(true);
         collectableSelect = transform.gameObject;
@@ -128,7 +131,8 @@ public class Character : NetworkBehaviour
 
     void deselect()
     {
-        if (collectableSelect){
+        if (collectableSelect)
+        {
             collectableSelect.GetComponent<Renderer>().material.color = Color.magenta;
             collectableSelect = null;
             TextInteractCollectable.SetActive(false);
@@ -149,8 +153,8 @@ public class Character : NetworkBehaviour
         return hit;
     }
 
-    
 
-    
+
+
 }
 

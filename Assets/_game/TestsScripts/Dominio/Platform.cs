@@ -1,35 +1,11 @@
-﻿using System.Collections.Generic;
-using Unity.Netcode;
-using Unity.VisualScripting;
-using UnityEditor.Build.Content;
+﻿using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class Platform : NetworkBehaviour
 {
 
     [SerializeField]
     private NetworkVariable<int> CrystalCount = new NetworkVariable<int>();
-
-    //Singleton
-    public static Platform instance;
-
-    //Obtiene el Singleton
-    private void Awake()
-    {
-        if (instance != this)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
 
 
     void Start()
@@ -48,9 +24,9 @@ public class Platform : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateCrystalCountServerRpc(int deposited)
     {
-        CrystalCount.Value =+ deposited;
+        CrystalCount.Value = +deposited;
         GameManager.notifyCollect(deposited);
     }
 
-    
+
 }

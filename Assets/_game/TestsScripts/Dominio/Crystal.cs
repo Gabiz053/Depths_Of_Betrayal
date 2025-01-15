@@ -15,7 +15,7 @@ public class Crystal : CollectableObjetc
     public override void pickedUp(Character c)
     {
         c.addCrystal(this);
-        UpdatePositionServerRpc(new Vector3(100,100,100));
+        UpdatePositionServerRpc(new Vector3(100, 100, 100));
     }
 
     public void comeback()

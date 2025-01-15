@@ -1,6 +1,4 @@
 ﻿using Unity.Netcode;
-using Unity.Netcode.Components;
-
 
 public abstract class CollectableObjetc : NetworkBehaviour
 {

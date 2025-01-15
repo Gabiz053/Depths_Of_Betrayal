@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using Unity.Netcode;
 
 public class MonsterCharacter : NetworkBehaviour
@@ -11,18 +10,19 @@ public class MonsterCharacter : NetworkBehaviour
 
     [SerializeField]
     private NetworkVariable<int> Kills = new NetworkVariable<int>();
-    
-    
+
+
     public void Start()
     {
 
     }
-    
-    public void Update(){
+
+    public void Update()
+    {
 
         if (IsClient && IsOwner)
         {
-            CheckAttack();   
+            CheckAttack();
         }
     }
 
@@ -44,7 +44,7 @@ public class MonsterCharacter : NetworkBehaviour
                     playerhit.UpdatePlayerHealthServerRpc(-50);
                 }
             }
-        } 
+        }
     }
 
     private RaycastHit getRayCast(int layerMask)

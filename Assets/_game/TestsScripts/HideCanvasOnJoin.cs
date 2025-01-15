@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;  // Importa UnityEngine.UI
 using Unity.Netcode;
 
 public class SessionManager : MonoBehaviour
 {
-    // Aquí ahora usamos el tipo Canvas en lugar de GameObject
+    // Aquï¿½ ahora usamos el tipo Canvas en lugar de GameObject
     public Canvas canvas;
 
     private void Start()
