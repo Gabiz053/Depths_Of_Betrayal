@@ -20,6 +20,12 @@ public class StartScript : NetworkBehaviour
         NetworkVariableWritePermission.Server
     );
 
+    // private NetworkVariable<int> monstruo = new NetworkVariable<int>(
+    //     0,
+    //     NetworkVariableReadPermission.Everyone,
+    //     NetworkVariableWritePermission.Server
+    // );
+
     private float startTime; // Tiempo real en que comenzó el juego.
     private float nextUpdateTime = 0f; // Controla cuándo debe actualizarse el temporizador.
 
@@ -50,6 +56,18 @@ public class StartScript : NetworkBehaviour
                 EndGame();
             }
         };
+
+        // monstruo.OnValueChanged += (int previousValue, int newValue) =>
+        // {
+        //     Debug.Log($"Monstruo: {newValue}");
+        //     if (!IsServer && COMOSEVEESTOMyId == newValue)
+        //     {
+        //         menu.MostrarMenuIsMonster();
+
+        //     } else if (!IsServer && MyId != newValue) {
+        //         menu.MostrarMenuIsPlayer();
+        //     }
+        // };
     }
 
     private void Update()
@@ -79,6 +97,7 @@ public class StartScript : NetworkBehaviour
     {
         Debug.Log("Game over! Time has run out.");
         // Aquí puedes añadir lógica para finalizar el juego, como mostrar un menú de fin de partida.
+        menu.MostrarMenuGameOverTimeout();
     }
 
     private string FormatTime(int totalSeconds)
@@ -92,9 +111,8 @@ public class StartScript : NetworkBehaviour
     {
         clicked = true;
 
-        // Genera numero aleatorio entre los jugadores conectados
-        // List<ulong> players = new List<ulong>(NetworkManager.Singleton.ConnectedClients.Keys);
-        // int randomPlayer = Random.Range(0, players.Count);
+        // Si eres el player 4, habria que hacer aqui el reparto aleatorio del monstruo
+        //monstruo=4;
         
     }
 }

@@ -112,17 +112,28 @@ public class Menu1 : MonoBehaviour
         // Asegúrate de que el video se haya cargado
         while (!videoPlayer.isPrepared)
         {
-           yield return null; // Espera hasta que el video esté listo
+            yield return null; // Espera hasta que el video esté listo
         }
 
         // Reproducir el video
         videoPlayer.Play();
 
-        // Esperar hasta que el video termine
-        while (videoPlayer.isPlaying)
+        float timeout = 12f; // Timeout de 12 segundos
+        float elapsedTime = 0f;
+
+        // Esperar hasta que el video termine o hasta que pasen 12 segundos
+        while (videoPlayer.isPlaying && elapsedTime < timeout)
         {
+            elapsedTime += Time.deltaTime;
             yield return null; // Espera cada frame mientras se reproduce
         }
+
+        // Detener el video si aún se está reproduciendo después del timeout
+        if (videoPlayer.isPlaying)
+        {
+            videoPlayer.Stop();
+        }
+
         Debug.Log("Terminado video");
         // Cuando el video termine, desactivar el CanvasVideo y mostrar otros Canvases
         CanvasVideo.SetActive(false);
@@ -183,11 +194,22 @@ public class Menu1 : MonoBehaviour
         // Reproducir el video
         videoPlayer.Play();
 
-        // Esperar hasta que el video termine
-        while (videoPlayer.isPlaying)
+        float timeout = 12f; // Timeout de 12 segundos
+        float elapsedTime = 0f;
+
+        // Esperar hasta que el video termine o hasta que pasen 12 segundos
+        while (videoPlayer.isPlaying && elapsedTime < timeout)
         {
+            elapsedTime += Time.deltaTime;
             yield return null; // Espera cada frame mientras se reproduce
         }
+
+        // Detener el video si aún se está reproduciendo después del timeout
+        if (videoPlayer.isPlaying)
+        {
+            videoPlayer.Stop();
+        }
+
         // Cuando el video termine, desactivar el CanvasVideo y mostrar otros Canvases
         CanvasVideo.SetActive(false);
         CanvasInitialMenu.SetActive(false);
@@ -284,9 +306,19 @@ public class Menu1 : MonoBehaviour
     // Función para mostrar el canvas "Inside Game"
     public void MostrarMenuInsideGame()
     {
+        CanvasInitialMenu.SetActive(false);
+        CanvasCreateGame.SetActive(false);
+        CanvasStartGame.SetActive(false);
+        CanvasJoinGame.SetActive(false);
+        CanvasJoinWait.SetActive(false);
+        CanvasSettings.SetActive(false);
+        CanvasSettingsInsideGame.SetActive(false);
+        CanvasControlsGame.SetActive(false);
         CanvasInsideGame.SetActive(true); // Muestra el menú "Inside Game"
         CanvasSettingsInsideGame.SetActive(false); // Oculta el menú de ajustes dentro del juego
         CanvasControlsGame.SetActive(false); // Oculta el menú de controles
+        isInGame = false;
+        CanvasInterfaceInsideGame.SetActive(false);
         isInsideGameMenuOpen = true;
         isSettingsInsideGameOpen = false;
         isControlsMenuOpen = false;
@@ -342,6 +374,7 @@ public class Menu1 : MonoBehaviour
     // Función para esconder los menús dentro del juego
     public void EsconderMenusDentroDelJuego()
     {
+        isInGame = true;
         CanvasInsideGame.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
@@ -433,7 +466,7 @@ public class Menu1 : MonoBehaviour
     // Función para actualizar el estado del cursor
     private void UpdateCursorState()
     {
-        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen )
+        if (isInsideGameMenuOpen || isSettingsInsideGameOpen || isControlsMenuOpen)
         {
             Cursor.lockState = CursorLockMode.None; // Desbloquea el cursor
             Cursor.visible = true; // Hace visible el cursor
