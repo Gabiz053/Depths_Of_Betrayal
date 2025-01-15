@@ -41,6 +41,9 @@ public class StartScript : NetworkBehaviour
                 if (IsServer)
                 {
                     startTime = Time.time; // Almacena el tiempo en que el juego comenzó.
+                    menu.MostrarMenuIsMonster();
+                } else {
+                    menu.MostrarMenuIsPlayer();
                 }
             }
         };

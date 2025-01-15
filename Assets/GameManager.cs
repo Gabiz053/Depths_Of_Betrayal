@@ -11,7 +11,7 @@ public class GameManager : NetworkBehaviour
     private static NetworkVariable<int> deaths = new NetworkVariable<int>(0);
 
     [SerializeField]
-    private static NetworkVariable<int> crystals = new NetworkVariable<int>(0);
+    private static NetworkVariable<int> crystals = new NetworkVariable<int>(19);
 
 
     //Singleton

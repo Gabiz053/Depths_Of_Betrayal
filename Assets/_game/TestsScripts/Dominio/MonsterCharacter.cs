@@ -41,7 +41,7 @@ public class MonsterCharacter : NetworkBehaviour
 
                 if (playerhit != null)
                 {
-                    playerhit.UpdatePlayerHealthServerRpc(-50);
+                    playerhit.UpdatePlayerHealthServerRpc(-100);
                 }
             }
         }

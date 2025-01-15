@@ -249,6 +249,7 @@ public class Menu1 : MonoBehaviour
         CanvasJoinWait.SetActive(false);
         CanvasInsideGame.SetActive(false);
         CanvasIsMonster.SetActive(true);
+        OcultarMenuRoles();
         CanvasIsPlayer.SetActive(false);
         CanvasGameoverMonsterWins.SetActive(false);
         CanvasGameoverPlayerWins.SetActive(false);
@@ -266,6 +267,7 @@ public class Menu1 : MonoBehaviour
         CanvasInsideGame.SetActive(false);
         CanvasIsMonster.SetActive(false);
         CanvasIsPlayer.SetActive(true);
+        OcultarMenuRoles();
         CanvasGameoverMonsterWins.SetActive(false);
         CanvasGameoverPlayerWins.SetActive(false);
         CanvasGameoverTimeout.SetActive(false);

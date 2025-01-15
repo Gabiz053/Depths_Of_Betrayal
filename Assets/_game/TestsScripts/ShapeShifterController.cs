@@ -23,7 +23,7 @@ public class ShapeShifterController : NetworkBehaviour
     void Update()
     {
 
-        if (IsOwner)
+        if (IsServer)
         {
             HandleTransformation();
         }

@@ -26273,7 +26273,7 @@ RectTransform:
   m_GameObject: {fileID: 913001767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1196415771}
@@ -26282,7 +26282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -735, y: 484}
   m_SizeDelta: {x: -640, y: -360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913001769
@@ -43083,7 +43083,7 @@ RectTransform:
   m_GameObject: {fileID: 1520102811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1664384493}
@@ -43092,8 +43092,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -640, y: -360}
+  m_AnchoredPosition: {x: -769, y: 468}
+  m_SizeDelta: {x: -320, y: -180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1520102813
 MonoBehaviour:
@@ -51153,7 +51153,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1877981533}
-    PlayerPrefab: {fileID: 1705959281218937708, guid: e7ca277d0c0175f4fa434db799d712b8, type: 3}
+    PlayerPrefab: {fileID: 1277198502817770612, guid: e332ecdd8a7395e4ba3b4eb06788e127, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 307cdaaebbdc3c84a9b00b3531a236ca, type: 2}

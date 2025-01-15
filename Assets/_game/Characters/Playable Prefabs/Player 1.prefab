@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turtle
       objectReference: {fileID: 0}
+    - target: {fileID: 5227289487979752696, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6866001849480828101, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_Enabled
       value: 0

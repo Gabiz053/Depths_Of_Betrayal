@@ -229,11 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1347921499117983169, guid: 2aaecbaf67a7fb1438a934c625bdecc8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4300003
+      value: 0.40000153
       objectReference: {fileID: 0}
     - target: {fileID: 1347921499117983169, guid: 2aaecbaf67a7fb1438a934c625bdecc8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.0039997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1347921499117983169, guid: 2aaecbaf67a7fb1438a934c625bdecc8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -539,11 +539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 134626908670397007, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.39999962
+      value: 3.2300014
       objectReference: {fileID: 0}
     - target: {fileID: 134626908670397007, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.0039997
       objectReference: {fileID: 0}
     - target: {fileID: 331635878411613336, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_Enabled
@@ -600,6 +600,10 @@ PrefabInstance:
     - target: {fileID: 5227289487979752696, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_Name
       value: Turtle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227289487979752696, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6866001849480828101, guid: 2f4f9894c03976a48925e31f7dd5e2f6, type: 3}
       propertyPath: m_Enabled
