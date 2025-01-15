@@ -14647,7 +14647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchorMax.y
@@ -60128,11 +60128,11 @@ MonoBehaviour:
   CanvasSettingsInsideGame: {fileID: 926174608}
   CanvasInterfaceInsideGame: {fileID: 786398012}
   CanvasControlsGame: {fileID: 296919684}
-  CanvasIsMonster: {fileID: 0}
-  CanvasIsPlayer: {fileID: 0}
-  CanvasGameoverMonsterWins: {fileID: 0}
-  CanvasGameoverPlayerWins: {fileID: 0}
-  CanvasGameoverTimeout: {fileID: 0}
+  CanvasIsMonster: {fileID: 913001767}
+  CanvasIsPlayer: {fileID: 1520102811}
+  CanvasGameoverMonsterWins: {fileID: 692181967}
+  CanvasGameoverPlayerWins: {fileID: 1894174599}
+  CanvasGameoverTimeout: {fileID: 1333423731}
   CanvasVideo: {fileID: 1712205343}
   videoPlayer: {fileID: 328773854}
 --- !u!1 &2091830226
