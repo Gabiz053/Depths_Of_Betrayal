@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Acceder a las escenas
 using UnityEngine.Video; // Acceder a los videos
 
 public class Menu1 : MonoBehaviour
@@ -86,7 +88,7 @@ public class Menu1 : MonoBehaviour
     }
 
     // Función para mostrar el canvas "Start Game"
-    public void MostrarMenuStartGame()
+     public void MostrarMenuStartGame()
     {
         // Desactivar y activar los Canvases relevantes
         CanvasCreateGame.SetActive(false);
@@ -186,7 +188,7 @@ public class Menu1 : MonoBehaviour
         // Asegúrate de que el video se haya cargado
         while (!videoPlayer.isPrepared)
         {
-            yield return null; // Espera hasta que el video esté listo
+           yield return null; // Espera hasta que el video esté listo
         }
 
         // Reproducir el video
@@ -237,7 +239,7 @@ public class Menu1 : MonoBehaviour
         CanvasVideo.SetActive(false);
     }
 
-    // REPARTO ROLES
+// REPARTO ROLES
     public void MostrarMenuIsMonster()
     {
         CanvasInitialMenu.SetActive(false);
@@ -279,7 +281,7 @@ public class Menu1 : MonoBehaviour
     }
 
 
-    // DENTRO DEL JUEGO
+// DENTRO DEL JUEGO
     // Función para mostrar el canvas "Inside Game" inicialmente (sin mostrar menús)
     public void MostrarMenuInsideGameInicial()
     {
@@ -373,6 +375,10 @@ public class Menu1 : MonoBehaviour
     public void EsconderMenusDentroDelJuego()
     {
         isInGame = true;
+        if (isButtonResume)
+        {
+            CanvasInterfaceInsideGame.SetActive(true);
+        }
         CanvasInsideGame.SetActive(false);
         CanvasSettingsInsideGame.SetActive(false);
         CanvasControlsGame.SetActive(false);
@@ -405,7 +411,7 @@ public class Menu1 : MonoBehaviour
         Debug.Log("Aquí se cierra el juego");
     }
 
-    // GAME OVER
+// GAME OVER
     // Función para mostrar el canvas "Game Over" (Monster Wins)
     public void MostrarMenuGameOverMonsterWins()
     {
@@ -435,7 +441,7 @@ public class Menu1 : MonoBehaviour
 
     void Update()
     {
-        // Detectar si se presiona la tecla Esc
+        // Detectar si se presiona la tecla "1"
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (isButtonResume)

@@ -78,6 +78,8 @@ public class StartScript : NetworkBehaviour
             gameStarted.Value = true;
         }
 
+        
+
         if (IsServer && gameStarted.Value)
         {
             float elapsedTime = Time.time - startTime;
